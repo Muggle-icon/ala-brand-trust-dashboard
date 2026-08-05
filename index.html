@@ -302,6 +302,253 @@ button { cursor: pointer; }
 }
 
 </style>
+  <style id="quicken-inspired-redesign">
+:root {
+  --purple: #4f2cf4;
+  --purple-dark: #3e1dd4;
+  --purple-soft: #efedff;
+  --canvas: #f5f5f7;
+  --surface: #ffffff;
+  --ink: #202124;
+  --muted: #6d6f76;
+  --line: #e1e2e7;
+  --soft: #f5f5f7;
+  --navy: #4f2cf4;
+  --navy-2: #3e1dd4;
+  --blue: #4f2cf4;
+  --shadow: 0 12px 34px rgba(31, 28, 55, .06);
+}
+
+html { background: var(--canvas); }
+body { padding-top: 28px; overflow-x: hidden; background: var(--canvas); color: var(--ink); }
+button, select { border-radius: 10px; }
+
+.demo-strip {
+  position: fixed; inset: 0 0 auto; z-index: 80; height: 28px;
+  background: #fff9e8; border-bottom: 1px solid #f3e8bd;
+  color: #7c6315; font-size: 11px; font-weight: 650;
+}
+
+.app-header {
+  position: sticky; top: 28px; z-index: 35;
+  height: 82px; margin-left: 76px; padding: 0 28px;
+  background: rgba(255,255,255,.94); border-bottom: 1px solid var(--line);
+  backdrop-filter: blur(18px); box-shadow: none;
+}
+.brand-block { gap: 13px; }
+.app-logo { width: 44px; height: 44px; border-radius: 12px; box-shadow: 0 5px 18px rgba(79,44,244,.2); }
+.brand-copy { min-width: 300px; }
+.brand-block h1 { font-size: 22px; font-weight: 760; letter-spacing: -.35px; }
+.brand-period { margin-top: 5px; gap: 6px; font-size: 11px; }
+.brand-period strong { font-size: 11px; font-weight: 650; }
+.header-actions { align-items: center; gap: 10px; }
+.period-switch { height: 40px; padding: 3px; border: 0; border-radius: 12px; background: #f0f0f3; }
+.period-switch button { min-width: 44px; height: 34px; padding: 0 13px; border-radius: 9px; font-size: 12px; }
+.period-switch button.active { background: #fff; color: var(--purple); box-shadow: 0 2px 8px rgba(30,28,55,.1); }
+.period-selector { min-width: 270px; gap: 3px; }
+.period-selector select { height: 40px; border-color: var(--line); border-radius: 10px; font-size: 12px; }
+.outline-button {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  height: 40px; padding: 0 16px; border: 1px solid var(--purple);
+  border-radius: 10px; background: var(--purple); color: #fff; font-size: 12px;
+  box-shadow: 0 5px 14px rgba(79,44,244,.18);
+}
+.outline-button:hover { background: var(--purple-dark); }
+
+.department-tabs {
+  position: fixed; inset: 28px auto 0 0; z-index: 50;
+  width: 76px; padding: 84px 10px 16px; flex-direction: column;
+  align-items: center; gap: 6px; overflow-x: hidden; overflow-y: auto;
+  background: #fff; border: 0; border-right: 1px solid var(--line); box-shadow: none;
+}
+.department-tabs::before {
+  content: "ALA"; position: absolute; top: 16px; left: 14px;
+  display: grid; width: 48px; height: 48px; place-items: center;
+  border-radius: 14px; background: var(--purple); color: #fff;
+  font-size: 11px; font-weight: 900; letter-spacing: .6px;
+  box-shadow: 0 8px 20px rgba(79,44,244,.22);
+}
+.department-tab {
+  position: relative; display: grid; flex: 0 0 48px; width: 48px; min-width: 48px; height: 48px;
+  place-items: center; padding: 0; border: 0; border-radius: 13px;
+  color: #7a7c84; background: transparent;
+}
+.department-tab:hover { color: var(--purple); background: var(--purple-soft); }
+.department-tab.active { color: #fff; background: var(--purple); box-shadow: 0 7px 18px rgba(79,44,244,.24); }
+.department-tab svg { width: 21px; height: 21px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.nav-label {
+  position: fixed; left: 68px; z-index: 90; opacity: 0; pointer-events: none;
+  transform: translateX(-4px); padding: 7px 10px; border-radius: 8px;
+  background: #202124; color: #fff; font-size: 11px; white-space: nowrap;
+  transition: opacity .15s, transform .15s;
+}
+.department-tab:hover .nav-label { opacity: 1; transform: translateX(0); }
+
+#dashboardRoot { max-width: none; margin: 0 0 0 76px; padding: 28px 28px 64px; }
+.dashboard-greeting { display: flex; justify-content: space-between; align-items: flex-end; margin: 2px 0 22px; }
+.dashboard-greeting p { margin: 0 0 6px; color: var(--muted); font-size: 13px; }
+.dashboard-greeting h2 { margin: 0; font-size: clamp(28px, 2.2vw, 38px); line-height: 1.13; letter-spacing: -1.1px; }
+.dashboard-greeting .sync-note { display: flex; align-items: center; gap: 7px; margin-bottom: 5px; color: var(--muted); font-size: 11px; }
+.dashboard-greeting .sync-note i { width: 7px; height: 7px; border-radius: 50%; background: #21a35b; box-shadow: 0 0 0 4px #e7f7ee; }
+
+.executive-layout { display: grid; grid-template-columns: 330px minmax(0, 1fr); align-items: stretch; gap: 18px; }
+.executive-main { display: grid; min-width: 0; gap: 18px; }
+.panel { border: 1px solid var(--line); border-radius: 18px; background: #fff; box-shadow: var(--shadow); overflow: hidden; }
+.panel-head { min-height: 68px; padding: 16px 20px; border-color: var(--line); }
+.panel-head h2 { font-size: 17px; letter-spacing: -.2px; }
+.panel-head p { font-size: 11px; }
+
+.accounts-panel { min-height: 490px; }
+.accounts-panel .panel-head { padding: 20px 20px 14px; border: 0; }
+.accounts-panel .panel-head h2 { font-size: 19px; }
+.score-summary { margin: 0 16px 12px; padding: 18px; border-radius: 16px; background: var(--purple-soft); }
+.score-summary small { color: #65606f; font-size: 11px; }
+.score-main { display: flex; justify-content: space-between; align-items: flex-end; margin-top: 6px; }
+.score-main strong { font-size: 43px; line-height: 1; letter-spacing: -2px; }
+.score-main span { padding: 5px 8px; border-radius: 20px; background: #fff; color: #17834a; font-size: 11px; font-weight: 800; }
+.metric-account-list { padding: 0 16px 14px; }
+.metric-account { padding: 13px 2px; border-bottom: 1px solid #ececf0; }
+.metric-account:last-child { border-bottom: 0; }
+.metric-account-head { display: flex; align-items: center; gap: 9px; }
+.metric-dot { width: 9px; height: 9px; flex: 0 0 9px; border-radius: 50%; background: var(--metric-color); }
+.metric-account-head strong { min-width: 0; flex: 1; font-size: 13px; }
+.metric-account-head b { font-size: 13px; }
+.metric-account-meta { display: flex; justify-content: space-between; margin: 6px 0 7px 18px; color: var(--muted); font-size: 10px; }
+.metric-account-line { height: 5px; margin-left: 18px; border-radius: 10px; overflow: hidden; background: #ececf1; }
+.metric-account-line i { display: block; width: var(--achievement); height: 100%; border-radius: inherit; background: var(--metric-color); }
+
+.trend-panel { min-height: 338px; padding: 22px 24px 14px; }
+.trend-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 20px; }
+.trend-head p { margin: 0 0 7px; color: var(--muted); font-size: 12px; }
+.trend-value { display: flex; align-items: baseline; gap: 12px; }
+.trend-value strong { font-size: 42px; line-height: 1; letter-spacing: -1.8px; }
+.trend-value span { color: #16884c; font-size: 12px; font-weight: 800; }
+.trend-legend { display: flex; align-items: center; gap: 7px; margin-top: 5px; color: var(--muted); font-size: 11px; }
+.trend-legend i { width: 20px; height: 3px; border-radius: 4px; background: var(--purple); }
+.trend-chart { width: 100%; height: 230px; margin-top: 8px; overflow: visible; }
+.trend-chart .grid { stroke: #e7e7ec; stroke-width: 1; stroke-dasharray: 4 6; }
+.trend-chart .area { fill: url(#trendGradient); }
+.trend-chart .line { fill: none; stroke: var(--purple); stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+.trend-chart .dot { fill: #fff; stroke: var(--purple); stroke-width: 3; }
+.trend-chart text { fill: #85878e; font-size: 11px; }
+
+.overview-mini-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 18px; }
+.focus-card, .method-card { min-height: 134px; padding: 19px 20px; }
+.mini-card-label { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+.mini-card-label h3 { margin: 0; font-size: 16px; }
+.mini-card-label span { padding: 4px 8px; border-radius: 20px; background: #fff2d8; color: #9b6500; font-size: 10px; font-weight: 800; }
+.focus-items { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.focus-items div { padding: 10px 11px; border-radius: 11px; background: #f6f6f8; }
+.focus-items b { display: block; margin-bottom: 3px; font-size: 12px; }
+.focus-items small { color: var(--muted); font-size: 10px; }
+.method-card { background: #21184a; color: #fff; border-color: #21184a; }
+.method-card .mini-card-label span { background: rgba(255,255,255,.11); color: #dcd5ff; }
+.method-formula { display: flex; flex-wrap: wrap; gap: 7px; }
+.method-formula span { padding: 7px 9px; border-radius: 8px; background: rgba(255,255,255,.09); color: #e8e5f7; font-size: 10px; }
+.method-card p { margin: 11px 0 0; color: #bab4d2; font-size: 10px; line-height: 1.5; }
+
+.overview-grid { grid-template-columns: minmax(0, 1.65fr) 350px; gap: 18px; margin-top: 18px; }
+.side-stack { gap: 18px; }
+.side-count { background: var(--purple-soft); color: var(--purple); }
+.collab-list, .alert-list { padding-inline: 20px; }
+.collab-item, .alert-item { border-color: #ececf0; }
+
+.metric-section { margin-top: 22px; }
+.metric-grid { gap: 12px; }
+.metric-card { min-height: 158px; padding: 16px; border: 1px solid var(--line); border-top: 1px solid var(--line); border-radius: 15px; box-shadow: none; }
+.metric-card::before { content: ""; width: 28px; height: 4px; margin-bottom: 12px; border-radius: 4px; background: var(--metric-color); }
+.metric-card .owner { border-radius: 20px; }
+.achievement-line, .mini-progress { border-radius: 20px; }
+.achievement-line i, .mini-progress i { border-radius: inherit; }
+
+.filter-group { padding: 3px; border-radius: 10px; background: #f1f1f4; }
+.filter-group button { border: 0; border-radius: 8px; background: transparent; font-size: 11px; }
+.filter-group button.active { background: #fff; color: var(--purple); box-shadow: 0 2px 7px rgba(30,28,55,.09); }
+.branch-switch { border: 0; border-radius: 10px; background: #f1f1f4; }
+.branch-switch button { border-radius: 8px; }
+.branch-switch button.active { color: var(--purple); }
+
+.plan-table th, .ledger-table th, .global-metric-table th, .department-ledger-table th {
+  background: #f4f3fb; color: #585368; border-bottom: 1px solid var(--line); font-size: 11px; font-weight: 760;
+}
+.plan-table td, .ledger-table td, .global-metric-table td, .department-ledger-table td { border-color: #ececf0; }
+.plan-table tbody tr:hover, .ledger-table tbody tr:hover, .global-metric-table tbody tr:hover { background: #faf9ff; }
+.work-department, .owner, .evidence-tag { border-radius: 20px; }
+.department-name i { border-radius: 5px; }
+
+.department-hero, .ledger-hero, .global-hero {
+  min-height: 154px; border: 1px solid var(--line); border-radius: 18px; background: #fff; color: var(--ink); box-shadow: var(--shadow); overflow: hidden;
+}
+.department-hero { border-left: 6px solid var(--dept-color); }
+.department-intro p, .ledger-hero .section-label, .global-hero .section-label { color: var(--purple); }
+.department-owner { background: color-mix(in srgb, var(--dept-color) 6%, white); }
+.ledger-hero > div:first-child span, .global-hero > div:first-child span { color: var(--muted); }
+.ledger-summary, .global-summary { background: #fafaff; }
+.ledger-summary article, .global-summary article { border-color: var(--line); }
+.ledger-panel, .global-metric-panel { margin-top: 18px; }
+.section-label { color: var(--purple); }
+.modal-backdrop { background: rgba(24,20,48,.52); backdrop-filter: blur(5px); }
+.modal-card { border-radius: 20px; }
+.detail-box { border-radius: 12px; }
+.toast { border-radius: 12px; background: #21184a; }
+
+@media (max-width: 1250px) {
+  .executive-layout { grid-template-columns: 300px minmax(0, 1fr); }
+  .overview-mini-grid { grid-template-columns: 1fr; }
+  .header-actions { flex-wrap: nowrap; }
+  .period-selector { min-width: 225px; }
+}
+
+@media (max-width: 980px) {
+  body { padding-bottom: 74px; }
+  .app-header { top: 28px; height: auto; min-height: 82px; margin-left: 0; padding: 12px 18px; }
+  .brand-copy { min-width: 0; }
+  .header-actions { flex-wrap: wrap; justify-content: flex-end; }
+  .department-tabs {
+    inset: auto 0 0; width: auto; height: 72px; padding: 10px 14px;
+    flex-direction: row; justify-content: flex-start; gap: 7px;
+    overflow-x: auto; overflow-y: hidden; border-right: 0; border-top: 1px solid var(--line);
+  }
+  .department-tabs::before { display: none; }
+  .department-tab { flex-basis: 50px; width: 50px; min-width: 50px; height: 50px; }
+  .nav-label { display: none; }
+  #dashboardRoot { margin-left: 0; padding: 22px 18px 40px; }
+  .executive-layout { grid-template-columns: 1fr; }
+  .accounts-panel { min-height: 0; }
+  .metric-account-list { display: grid; grid-template-columns: repeat(2, 1fr); column-gap: 18px; }
+  .overview-grid { grid-template-columns: 1fr; }
+  .side-stack { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 640px) {
+  .demo-strip { padding: 0 10px; text-align: center; font-size: 9px; }
+  .app-header { align-items: center; gap: 10px; }
+  .app-logo { width: 38px; height: 38px; }
+  .brand-block h1 { font-size: 18px; }
+  .brand-period { display: none; }
+  .header-actions { width: 100%; justify-content: flex-start; gap: 6px; }
+  .period-switch button { min-width: 38px; padding-inline: 10px; }
+  .period-selector { width: auto; min-width: 0; max-width: none; flex: 1 1 0; overflow: hidden; }
+  .period-selector select { width: 100%; min-width: 0; max-width: 100%; padding-right: 24px; overflow: hidden; text-overflow: ellipsis; font-size: 10.5px; }
+  .app-header > .header-actions > .outline-button { position: fixed; top: 43px; right: 18px; z-index: 100; width: 40px; padding: 0; }
+  .outline-button span { display: none; }
+  .dashboard-greeting { align-items: flex-start; flex-direction: column; gap: 10px; }
+  .dashboard-greeting h2 { font-size: 29px; }
+  .metric-account-list { grid-template-columns: 1fr; }
+  .trend-panel { padding-inline: 17px; }
+  .trend-value strong { font-size: 35px; }
+  .trend-chart { height: 185px; }
+  .focus-items { grid-template-columns: 1fr; }
+  .side-stack { grid-template-columns: 1fr; }
+  .panel-head { align-items: flex-start; flex-direction: column; gap: 10px; }
+}
+
+@media print {
+  body { padding-top: 0; }
+  .app-header { position: static; margin-left: 0; }
+  #dashboardRoot { margin-left: 0; }
+}
+  </style>
 </head>
 <body>
   <!--
@@ -326,7 +573,7 @@ button { cursor: pointer; }
         <button data-period="month">月</button>
       </div>
       <label class="period-selector"><small id="periodSelectLabel">周定位</small><select id="periodSelect" aria-label="选择工作周期"></select></label>
-      <button class="outline-button" id="exportDashboard">导出当前看板</button>
+      <button class="outline-button" id="exportDashboard"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4"></path><path d="M5 21h14a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2"></path></svg><span>导出看板</span></button>
     </div>
   </header>
 
@@ -616,10 +863,27 @@ function progressColor(value) {
   return '#d84a45';
 }
 
+function navIcon(id) {
+  const icons = {
+    overall: '<rect x="3" y="3" width="7" height="9" rx="1"></rect><rect x="14" y="3" width="7" height="5" rx="1"></rect><rect x="14" y="12" width="7" height="9" rx="1"></rect><rect x="3" y="16" width="7" height="5" rx="1"></rect>',
+    brand: '<path d="m12 3 1.7 4.3L18 9l-4.3 1.7L12 15l-1.7-4.3L6 9l4.3-1.7L12 3Z"></path><path d="m19 15 .8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8L19 15Z"></path>',
+    product: '<path d="m21 8-9 5-9-5"></path><path d="m3.3 7 8.7-4 8.7 4v10L12 22l-8.7-5V7Z"></path><path d="M12 13v9"></path>',
+    ads: '<path d="m3 11 18-5v12L3 14v-3Z"></path><path d="M11.6 15.9 13 21H8l-1.7-6"></path>',
+    service: '<path d="M4 14a8 8 0 0 1 16 0"></path><path d="M18 19c0 1.1-.9 2-2 2h-3"></path><path d="M4 14h2v5H4a2 2 0 0 1-2-2v-1a2 2 0 0 1 2-2Zm16 0h-2v5h2a2 2 0 0 0 2-2v-1a2 2 0 0 0-2-2Z"></path>',
+    collection: '<circle cx="12" cy="12" r="9"></circle><path d="M16 8.5c-.7-.5-1.8-.8-3-.8-1.7 0-3 .8-3 2s1.3 1.8 3 2 3 1 3 2.3-1.3 2.3-3 2.3c-1.3 0-2.5-.4-3.2-1"></path><path d="M13 5.5v13"></path>',
+    risk: '<path d="M12 3 4.5 6v5.7c0 4.5 3.2 7.7 7.5 9.3 4.3-1.6 7.5-4.8 7.5-9.3V6L12 3Z"></path><path d="m8.8 12 2.1 2.1 4.5-4.5"></path>',
+    legal: '<path d="M12 3v18M5 6h14M6 6l-3 7h6L6 6Zm12 0-3 7h6l-3-7ZM8 21h8"></path>',
+    data: '<ellipse cx="12" cy="5" rx="8" ry="3"></ellipse><path d="M4 5v6c0 1.7 3.6 3 8 3s8-1.3 8-3V5"></path><path d="M4 11v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"></path>',
+    global: '<path d="M4 19V9m6 10V5m6 14v-7m4 7H2"></path><path d="m4 7 6-4 6 7 5-5"></path>',
+    ledger: '<rect x="5" y="4" width="14" height="17" rx="2"></rect><path d="M9 4.5V3h6v1.5M9 10h6m-6 4h6m-6 4h4"></path>',
+  };
+  return `<svg viewBox="0 0 24 24" aria-hidden="true">${icons[id] || icons.overall}</svg>`;
+}
+
 function renderTabs() {
-  const tabs = [['overall', '总览', '#12384d'], ...Object.entries(departments).map(([id, d]) => [id, d.label, d.color]), ['global', '全局指标', '#156da0'], ['ledger', '工作台账', '#2e9d63']];
+  const tabs = [['overall', '总览', '#4f2cf4'], ...Object.entries(departments).map(([id, d]) => [id, d.label, d.color]), ['global', '全局指标', '#4f2cf4'], ['ledger', '工作台账', '#4f2cf4']];
   const root = document.querySelector('#departmentTabs');
-  root.innerHTML = tabs.map(([id, label, color]) => `<button class="department-tab ${dashboardState.tab === id ? 'active' : ''}" data-tab="${id}" style="--tab-color:${color}">${label}</button>`).join('');
+  root.innerHTML = tabs.map(([id, label, color]) => `<button class="department-tab ${dashboardState.tab === id ? 'active' : ''}" data-tab="${id}" style="--tab-color:${color}" aria-label="${label}" title="${label}">${navIcon(id)}<span class="nav-label">${label}</span></button>`).join('');
   root.querySelectorAll('[data-tab]').forEach(button => button.addEventListener('click', () => {
     dashboardState.tab = button.dataset.tab;
     dashboardState.planFilter = 'all';
@@ -720,15 +984,34 @@ function renderGlobalMetrics() {
   </section>`;
 }
 
+function trustTrendChart() {
+  return `<svg class="trend-chart" viewBox="0 0 900 240" role="img" aria-label="品牌信任指数近十二周走势">
+    <defs><linearGradient id="trendGradient" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#6b4cf6" stop-opacity=".3"></stop><stop offset="1" stop-color="#6b4cf6" stop-opacity="0"></stop></linearGradient></defs>
+    <path class="grid" d="M30 42H875M30 90H875M30 138H875M30 186H875"></path>
+    <path class="area" d="M30 184 C70 177 95 160 130 165 S200 149 235 152 S300 137 340 142 S410 120 455 128 S525 108 570 112 S640 88 680 96 S750 72 790 79 S842 58 875 63 L875 208 L30 208 Z"></path>
+    <path class="line" d="M30 184 C70 177 95 160 130 165 S200 149 235 152 S300 137 340 142 S410 120 455 128 S525 108 570 112 S640 88 680 96 S750 72 790 79 S842 58 875 63"></path>
+    <circle class="dot" cx="875" cy="63" r="6"></circle>
+    <text x="30" y="228">5月</text><text x="235" y="228">6月</text><text x="455" y="228">7月</text><text x="680" y="228">8月</text><text x="842" y="228">当前</text>
+  </svg>`;
+}
+
 function renderOverview() {
   const showingCompleted = dashboardState.overallWorkView === 'completed';
   const periodNoun = dashboardState.period === 'week' ? '本周' : '本月';
-  return `<section class="overview-hero">
-    <div class="overall-score"><small>整体指标达成</small><strong>76%</strong><span>${periodNoun}需关注</span></div>
-    <div class="hero-message"><small>${periodNoun}总结</small><h2>重点事项整体推进稳定，渠道用户质量、费用理解和困难用户方案仍需优先协同。</h2><p>总结随顶部周期同步切换；所有数值均为看板演示，接入真实数据后自动更新。</p></div>
-  </section>
-  <section class="metric-section"><div class="section-head"><div><p class="section-label">KEY RESULTS</p><h2 class="section-title">核心指标达成</h2></div><p class="section-note">目标、当前值接入后自动计算；当前百分比仅展示交互逻辑</p></div><div class="metric-grid" style="--metric-columns:${overallMetrics.length}">${metricCards(overallMetrics)}</div>
-    <article class="trust-method"><div class="trust-method-title"><span>品牌信任指数如何量化</span><strong>0–100分</strong><p>各维度先按统一规则标准化，再按权重汇总；首月建立基线，之后跟踪趋势与目标差距。</p></div><div class="trust-formula"><div><b>25%</b><span>用户体验与应用评分</span></div><div><b>25%</b><span>推荐意愿／NPS</span></div><div><b>20%</b><span>投诉与重复投诉逆向得分</span></div><div><b>15%</b><span>履约、复借与长期行为</span></div><div><b>15%</b><span>正向舆情与品牌搜索</span></div></div><p class="trust-governance">品牌部门定义业务目标，部门分析师计算与解释，数据治理／PMO确认口径、数据源和更新时间。</p></article>
+  const metricAccounts = overallMetrics.map(([name, owner, target, current, achievement, color]) => `<article class="metric-account" style="--metric-color:${color};--achievement:${achievement}%">
+    <div class="metric-account-head"><i class="metric-dot"></i><strong>${name}</strong><b>${achievement}%</b></div>
+    <div class="metric-account-meta"><span>${owner}</span><span>${target}</span></div><div class="metric-account-line"><i></i></div>
+  </article>`).join('');
+  return `<section class="dashboard-greeting"><div><p>${periodNoun}经营概览</p><h2>你好，ALA 团队 👋</h2></div><div class="sync-note"><i></i><span>数据口径已同步 · 演示模式</span></div></section>
+  <section class="executive-layout">
+    <aside class="panel accounts-panel"><div class="panel-head"><div><h2>核心指标</h2><p>统一查看目标、责任与进度</p></div><span class="side-count">${overallMetrics.length}项</span></div><div class="score-summary"><small>整体指标达成</small><div class="score-main"><strong>76%</strong><span>↑ 4.8</span></div></div><div class="metric-account-list">${metricAccounts}</div></aside>
+    <div class="executive-main">
+      <section class="panel trend-panel"><div class="trend-head"><div><p>品牌信任指数</p><div class="trend-value"><strong>76.4</strong><span>↑ 6.2%</span></div></div><div class="trend-legend"><i></i><span>近12周趋势</span></div></div>${trustTrendChart()}</section>
+      <div class="overview-mini-grid">
+        <article class="panel focus-card"><div class="mini-card-label"><h3>${periodNoun}优先关注</h3><span>3项需协同</span></div><div class="focus-items"><div><b>渠道用户质量</b><small>投放 × 风控</small></div><div><b>费用理解体验</b><small>产品 × 法务</small></div><div><b>困难用户方案</b><small>催收 × 消保</small></div></div></article>
+        <article class="panel method-card"><div class="mini-card-label"><h3>信任指数构成</h3><span>0–100分</span></div><div class="method-formula"><span>体验 25%</span><span>NPS 25%</span><span>投诉 20%</span><span>履约 15%</span><span>舆情 15%</span></div><p>各维度按统一规则标准化，由数据治理／PMO确认口径与更新时间。</p></article>
+      </div>
+    </div>
   </section>
   <div class="overview-grid">
     <section class="panel"><div class="panel-head"><div><h2>工作计划</h2><p>${showingCompleted ? '查看过去完成的工作、交付证据和验证状态' : `查看${periodNoun}工作、明确产出、责任人与完成进度`}</p></div><div class="panel-actions"><div class="branch-switch"><button class="${showingCompleted ? '' : 'active'}" data-overall-work-view="active">进行中 <b>${overallPlans.length}</b></button><button class="${showingCompleted ? 'active' : ''}" data-overall-work-view="completed">已完成 <b>${completedLedger.length}</b></button></div>${filters()}</div></div>${showingCompleted ? completedWorkTable(completedLedger, true) : planTable(overallPlans, true)}</section>
