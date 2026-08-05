@@ -1,29 +1,27 @@
-# Quicken-inspired interface DNA
+# Arcade-inspired interface DNA
 
-Reference: Mobbin’s Quicken Web dashboard screen supplied by the user.
+Reference: Mobbin’s Arcade Web “My Library” screen supplied by the user.
 
 ## Visual system
 
-- Canvas: cool light gray (`#f5f5f7`) with white cards.
-- Primary: vivid violet (`#4f2cf4`) used for active navigation, key charts, focus states, and primary controls.
-- Text: near-black (`#202124`) with neutral gray secondary copy (`#6d6f76`).
-- Surfaces: 16–20px corner radius, hairline gray borders, restrained shadows.
-- Type scale: 12px metadata, 14px body, 16–18px card titles, 28–34px page heading, 42–50px hero values.
-- Spacing: 8px base rhythm; 24–28px page/card gutters.
+- Canvas: white main workspace with a very light gray navigation rail (`#f7f8fa`).
+- Primary: ALA blue (`#294BFF`) used for active navigation, primary actions, focus states, and key values.
+- Text: deep ink (`#172033`) with cool gray secondary copy (`#747b87`).
+- Surfaces: 12–14px corner radius, visible 1px neutral borders, almost no shadow.
+- Type scale: 11–12px labels, 13–14px metadata/body, 16px card titles, 30–34px page headings, 36–48px key values.
+- Spacing: 4px base rhythm; 20px card gaps; 24px internal card padding; approximately 56–64px vertical section separation.
 
 ## Layout grammar
 
-- A narrow, icon-only rail anchors navigation on the left.
-- A white utility header holds page identity and reporting controls.
-- The overview starts with a friendly greeting, followed by an asymmetric two-column composition:
-  - compact summary/account list on the left;
-  - large trend visualization on the right.
-- Operational content continues in modular cards below, using lightweight tables and lists rather than heavy dashboard chrome.
+- A 304px text navigation rail anchors the application on the left.
+- Main content is centered in a roughly 1320px workspace with generous outer whitespace.
+- The page starts with a simple title/action row, followed by quiet filter controls.
+- Primary content uses a four-column library grid: visual preview first, then title and metadata.
+- Operational sections repeat the same grid rhythm before switching to tables where dense comparison is necessary.
 
 ## ALA adaptation
 
 - Keep the embedded ALA logo, Chinese product copy, all existing data, filters, modal details, period controls, and export action.
 - Replace Quicken-specific financial language and assets with ALA brand-governance concepts.
 - Use the reference’s layout and visual rhythm, not its trademarks or source code.
-- Preserve department colors as small semantic accents; violet remains the interface-wide primary color.
-
+- Preserve department colors only as small semantic dots or tags; `#294BFF` remains the interface-wide primary color.

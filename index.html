@@ -304,8 +304,8 @@ button { cursor: pointer; }
 </style>
   <style id="quicken-inspired-redesign">
 :root {
-  --purple: #4f2cf4;
-  --purple-dark: #3e1dd4;
+  --purple: #294BFF;
+  --purple-dark: #1939db;
   --purple-soft: #efedff;
   --canvas: #f5f5f7;
   --surface: #ffffff;
@@ -313,9 +313,9 @@ button { cursor: pointer; }
   --muted: #6d6f76;
   --line: #e1e2e7;
   --soft: #f5f5f7;
-  --navy: #4f2cf4;
-  --navy-2: #3e1dd4;
-  --blue: #4f2cf4;
+  --navy: #294BFF;
+  --navy-2: #1939db;
+  --blue: #294BFF;
   --shadow: 0 12px 34px rgba(31, 28, 55, .06);
 }
 
@@ -336,7 +336,7 @@ button, select { border-radius: 10px; }
   backdrop-filter: blur(18px); box-shadow: none;
 }
 .brand-block { gap: 13px; }
-.app-logo { width: 44px; height: 44px; border-radius: 12px; box-shadow: 0 5px 18px rgba(79,44,244,.2); }
+.app-logo { width: 44px; height: 44px; border-radius: 12px; box-shadow: 0 5px 18px rgba(41,75,255,.2); }
 .brand-copy { min-width: 300px; }
 .brand-block h1 { font-size: 22px; font-weight: 760; letter-spacing: -.35px; }
 .brand-period { margin-top: 5px; gap: 6px; font-size: 11px; }
@@ -351,7 +351,7 @@ button, select { border-radius: 10px; }
   display: inline-flex; align-items: center; justify-content: center; gap: 8px;
   height: 40px; padding: 0 16px; border: 1px solid var(--purple);
   border-radius: 10px; background: var(--purple); color: #fff; font-size: 12px;
-  box-shadow: 0 5px 14px rgba(79,44,244,.18);
+  box-shadow: 0 5px 14px rgba(41,75,255,.18);
 }
 .outline-button:hover { background: var(--purple-dark); }
 
@@ -366,7 +366,7 @@ button, select { border-radius: 10px; }
   display: grid; width: 48px; height: 48px; place-items: center;
   border-radius: 14px; background: var(--purple); color: #fff;
   font-size: 11px; font-weight: 900; letter-spacing: .6px;
-  box-shadow: 0 8px 20px rgba(79,44,244,.22);
+  box-shadow: 0 8px 20px rgba(41,75,255,.22);
 }
 .department-tab {
   position: relative; display: grid; flex: 0 0 48px; width: 48px; min-width: 48px; height: 48px;
@@ -374,7 +374,7 @@ button, select { border-radius: 10px; }
   color: #7a7c84; background: transparent;
 }
 .department-tab:hover { color: var(--purple); background: var(--purple-soft); }
-.department-tab.active { color: #fff; background: var(--purple); box-shadow: 0 7px 18px rgba(79,44,244,.24); }
+.department-tab.active { color: #fff; background: var(--purple); box-shadow: 0 7px 18px rgba(41,75,255,.24); }
 .department-tab svg { width: 21px; height: 21px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
 .nav-label {
   position: fixed; left: 68px; z-index: 90; opacity: 0; pointer-events: none;
@@ -549,6 +549,269 @@ button, select { border-radius: 10px; }
   #dashboardRoot { margin-left: 0; }
 }
   </style>
+  <style id="arcade-inspired-redesign">
+:root {
+  --brand-primary: #294BFF;
+  --purple: #294BFF;
+  --purple-dark: #1939db;
+  --purple-soft: #eef1ff;
+  --canvas: #ffffff;
+  --surface: #ffffff;
+  --sidebar: #f7f8fa;
+  --ink: #172033;
+  --muted: #747b87;
+  --line: #e1e4e9;
+  --soft: #f5f6f8;
+  --navy: #294BFF;
+  --blue: #294BFF;
+  --sidebar-width: 304px;
+  --content-width: 1320px;
+  --shadow: 0 2px 6px rgba(24, 32, 51, .04);
+}
+
+html, body { background: #fff; color: var(--ink); }
+body { padding: 0; overflow-x: hidden; }
+
+.app-header {
+  position: fixed; inset: 0 auto 0 0; z-index: 45;
+  display: block; width: var(--sidebar-width); height: 100vh; margin: 0; padding: 20px;
+  background: var(--sidebar); border: 0; border-right: 1px solid var(--line);
+  backdrop-filter: none; box-shadow: none;
+}
+.brand-block { gap: 10px; }
+.app-logo { width: 32px; height: 32px; border-radius: 9px; box-shadow: 0 4px 12px rgba(41,75,255,.2); }
+.brand-copy { min-width: 0; }
+.brand-block h1 { font-size: 15px; font-weight: 760; letter-spacing: -.1px; }
+.brand-period { display: none; }
+
+.sidebar-search {
+  position: fixed; top: 64px; left: 12px; z-index: 55;
+  display: flex; width: calc(var(--sidebar-width) - 24px); height: 44px; align-items: center; gap: 9px;
+  padding: 0 10px 0 12px; border: 1px solid var(--line); border-radius: 10px;
+  background: #fff; color: #59616e; box-shadow: 0 1px 2px rgba(24,32,51,.02);
+}
+.sidebar-search svg { width: 19px; height: 19px; flex: 0 0 19px; }
+.sidebar-search input { min-width: 0; flex: 1; border: 0; outline: 0; background: transparent; color: var(--ink); font-size: 13px; font-weight: 600; }
+.sidebar-search input::placeholder { color: #737b87; }
+.sidebar-search kbd { padding: 4px 6px; border-radius: 6px; background: #f0f1f3; color: #777e89; font-family: inherit; font-size: 10px; }
+
+.department-tabs {
+  position: fixed; inset: 122px auto 210px 0; z-index: 50;
+  display: flex; width: var(--sidebar-width); padding: 0 10px; flex-direction: column;
+  align-items: stretch; gap: 3px; overflow-x: hidden; overflow-y: auto;
+  background: var(--sidebar); border: 0; box-shadow: none;
+}
+.department-tabs::before { display: none; }
+.sidebar-group-label { flex: 0 0 auto; margin: 18px 10px 5px; color: #7f8793; font-size: 11px; font-weight: 650; letter-spacing: .1px; }
+.sidebar-group-label:first-child { margin-top: 2px; }
+.department-tab {
+  display: flex; flex: 0 0 40px; width: 100%; min-width: 0; height: 40px;
+  justify-content: flex-start; align-items: center; gap: 11px; padding: 0 11px;
+  border: 0; border-radius: 9px; color: #525b68; background: transparent; font-size: 13px; font-weight: 650;
+}
+.department-tab svg { width: 18px; height: 18px; flex: 0 0 18px; stroke-width: 1.9; }
+.department-tab:hover { color: var(--brand-primary); background: #f0f2ff; }
+.department-tab.active { color: var(--brand-primary); background: #ecefff; box-shadow: none; }
+.nav-label { position: static; z-index: auto; opacity: 1; transform: none; padding: 0; background: transparent; color: inherit; font-size: inherit; white-space: nowrap; transition: none; }
+.department-tab:hover .nav-label { opacity: 1; transform: none; }
+
+.demo-strip {
+  position: fixed; inset: auto auto 174px 22px; z-index: 60;
+  display: block; width: calc(var(--sidebar-width) - 44px); height: auto;
+  padding: 0; background: transparent; border: 0; color: #8a7041;
+  font-size: 9px; font-weight: 600; line-height: 1.45; text-align: left;
+}
+.header-actions {
+  position: fixed; inset: auto auto 16px 10px; z-index: 58;
+  display: grid; width: calc(var(--sidebar-width) - 20px); padding: 40px 13px 13px;
+  grid-template-columns: 92px minmax(0, 1fr); align-items: end; gap: 9px;
+  border: 1px solid var(--line); border-radius: 12px; background: #fff; box-shadow: 0 8px 26px rgba(24,32,51,.06);
+}
+.header-actions::before { content: "报告周期"; position: absolute; top: 14px; left: 14px; color: var(--ink); font-size: 13px; font-weight: 750; }
+.period-switch { width: 92px; height: 40px; padding: 3px; border: 1px solid var(--line); border-radius: 9px; background: #f4f5f7; }
+.period-switch button { min-width: 40px; height: 32px; padding: 0 8px; border-radius: 7px; font-size: 11px; }
+.period-switch button.active { background: #fff; color: var(--brand-primary); box-shadow: 0 1px 4px rgba(24,32,51,.09); }
+.period-selector { width: 100%; min-width: 0; gap: 3px; }
+.period-selector small { display: none; }
+.period-selector select { height: 40px; min-width: 0; padding: 0 24px 0 10px; border-color: var(--line); border-radius: 9px; font-size: 10px; }
+.outline-button {
+  position: fixed; top: 60px; right: max(32px, calc((100vw - var(--sidebar-width) - var(--content-width)) / 2)); z-index: 65;
+  display: inline-flex; width: 142px; height: 46px; padding: 0 18px; gap: 8px;
+  border: 1px solid #1d3de4; border-radius: 10px; background: var(--brand-primary); color: #fff;
+  font-size: 13px; box-shadow: 0 4px 10px rgba(41,75,255,.18);
+}
+.outline-button:hover { background: var(--purple-dark); }
+
+#dashboardRoot {
+  max-width: none; margin: 0 0 0 var(--sidebar-width);
+  padding: 60px max(44px, calc((100vw - var(--sidebar-width) - var(--content-width)) / 2)) 96px;
+  background: #fff;
+}
+.dashboard-greeting { min-height: 48px; margin: 0 0 30px; padding-right: 180px; align-items: flex-start; }
+.dashboard-greeting h2 { margin: 0 0 7px; font-size: 33px; line-height: 1.14; font-weight: 780; letter-spacing: -1px; }
+.dashboard-greeting p { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.5; }
+.dashboard-greeting .sync-note { align-self: center; margin: 5px 0 0; color: var(--muted); font-size: 11px; }
+.dashboard-greeting .sync-note i { background: #21a35b; }
+
+.arcade-toolbar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 28px; }
+.library-filters, .library-view { display: flex; align-items: center; gap: 9px; }
+.library-filters button, .library-view button { height: 42px; padding: 0 16px; border: 1px solid transparent; border-radius: 9px; background: #f3f4f6; color: #3e4653; font-size: 12px; font-weight: 650; }
+.library-filters button.active { padding-left: 42px; background: #f3f4f6; color: var(--ink); position: relative; }
+.library-filters button.active::before { content: "▦"; position: absolute; left: 15px; font-size: 17px; }
+.library-view span { display: grid; width: 42px; height: 42px; place-items: center; border-radius: 9px; color: #626a76; font-size: 17px; }
+.library-view span.active { border: 1px solid var(--line); background: #f3f4f6; color: var(--ink); }
+
+.metric-library-grid, .plan-library-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; }
+.metric-library-card, .plan-project-card, .resource-library-card {
+  min-width: 0; overflow: hidden; border: 1px solid var(--line); border-radius: 13px;
+  background: #fff; box-shadow: var(--shadow); transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease;
+}
+.metric-library-card:hover, .plan-project-card:hover, .resource-library-card:hover { transform: translateY(-2px); border-color: #cbd1dc; box-shadow: 0 8px 22px rgba(24,32,51,.08); }
+.metric-library-preview { position: relative; min-height: 176px; padding: 20px; overflow: hidden; border-bottom: 1px solid var(--line); background: #f4f5f7; }
+.metric-preview-head { display: flex; justify-content: space-between; align-items: center; color: #737b87; font-size: 10px; font-weight: 700; letter-spacing: .6px; }
+.metric-preview-head i { width: 9px; height: 9px; border-radius: 50%; background: var(--metric-color); }
+.metric-library-preview > strong { display: block; margin-top: 30px; color: var(--ink); font-size: 43px; line-height: 1; letter-spacing: -2px; }
+.metric-library-preview > p { margin: 8px 0 0; color: #69717d; font-size: 11px; }
+.metric-preview-bars { position: absolute; inset: auto 20px 18px; display: flex; height: 28px; align-items: end; gap: 7px; }
+.metric-preview-bars i { flex: 1; height: 32%; border-radius: 3px 3px 0 0; background: color-mix(in srgb, var(--metric-color) 26%, white); }
+.metric-preview-bars i:nth-child(2) { height: 52%; }
+.metric-preview-bars i:nth-child(3) { height: 40%; }
+.metric-preview-bars i:nth-child(4) { height: 75%; }
+.metric-preview-bars i:nth-child(5) { height: var(--achievement); max-height: 100%; background: var(--metric-color); }
+.metric-library-copy { padding: 14px 14px 13px; }
+.metric-library-copy h3 { margin: 0; overflow: hidden; color: var(--ink); font-size: 15px; line-height: 1.35; font-weight: 750; text-overflow: ellipsis; white-space: nowrap; }
+.metric-library-copy > p { margin: 5px 0 18px; overflow: hidden; color: var(--muted); font-size: 11px; text-overflow: ellipsis; white-space: nowrap; }
+.metric-library-copy > div { display: flex; min-height: 22px; align-items: center; gap: 7px; color: var(--muted); font-size: 10px; }
+.metric-library-copy > div b { margin-left: auto; color: #69717d; font-size: 13px; }
+.metric-owner-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--metric-color); }
+
+.metric-feature-card .metric-library-preview {
+  min-height: 176px; color: #fff;
+  background: radial-gradient(circle at 78% 12%, rgba(122,205,255,.72), transparent 34%), radial-gradient(circle at 10% 100%, #092ebd, transparent 48%), linear-gradient(145deg, #4e8fff 0%, var(--brand-primary) 55%, #0d2ec9 100%);
+}
+.metric-feature-card .metric-library-preview::after { content: ""; position: absolute; inset: -55% -30% auto 22%; height: 160px; transform: rotate(-9deg); border-radius: 50%; border: 22px solid rgba(255,255,255,.1); }
+.feature-kicker { position: relative; z-index: 1; font-size: 9px; font-weight: 800; letter-spacing: 1.1px; }
+.metric-feature-card .metric-library-preview > strong { position: relative; z-index: 1; margin-top: 16px; color: #fff; }
+.metric-feature-card .metric-library-preview > p { position: relative; z-index: 1; color: rgba(255,255,255,.82); }
+.metric-feature-card .trend-chart { position: absolute; inset: auto 12px 4px; z-index: 1; width: calc(100% - 24px); height: 78px; margin: 0; }
+.metric-feature-card .trend-chart .grid { stroke: rgba(255,255,255,.16); }
+.metric-feature-card .trend-chart .line { stroke: #fff; stroke-width: 5; }
+.metric-feature-card .trend-chart .dot { fill: var(--brand-primary); stroke: #fff; }
+.metric-feature-card .trend-chart text { display: none; }
+.feature-status { padding: 4px 7px; border-radius: 6px; background: #eef1ff; color: var(--brand-primary); font-weight: 750; }
+
+.library-section-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; margin: 58px 0 22px; }
+.library-section-head h2 { margin: 0; font-size: 29px; line-height: 1.2; font-weight: 780; letter-spacing: -.7px; }
+.library-section-head p { margin: 6px 0 0; color: var(--muted); font-size: 12px; }
+.library-section-head .panel-actions { flex-direction: row; align-items: center; }
+.branch-switch, .filter-group { border: 0; border-radius: 9px; background: #f3f4f6; }
+.branch-switch button, .filter-group button { min-height: 36px; border-radius: 7px; font-size: 11px; }
+.branch-switch button.active, .filter-group button.active { background: #fff; color: var(--brand-primary); box-shadow: 0 1px 4px rgba(24,32,51,.08); }
+
+.plan-project-card { cursor: pointer; }
+.plan-project-visual { min-height: 154px; padding: 16px; border-bottom: 1px solid var(--line); background: #f5f6f8; }
+.project-visual-top { display: flex; justify-content: space-between; align-items: center; }
+.project-visual-top > span:first-child { color: var(--dept-color); font-size: 10px; font-weight: 800; }
+.project-visual-top .status-tag { padding: 4px 7px; font-size: 9px; }
+.plan-project-visual > strong { display: block; margin: 24px 0 11px; font-size: 37px; line-height: 1; letter-spacing: -1.5px; }
+.project-progress { height: 7px; overflow: hidden; border-radius: 10px; background: #e4e6ea; }
+.project-progress i { display: block; width: var(--progress); height: 100%; border-radius: inherit; background: var(--brand-primary); }
+.plan-project-visual > small { display: block; margin-top: 11px; color: var(--muted); font-size: 10px; }
+.plan-project-copy { padding: 14px; }
+.plan-project-copy h3 { margin: 0; font-size: 15px; line-height: 1.35; }
+.plan-project-copy > p { min-height: 34px; margin: 6px 0 16px; color: var(--muted); font-size: 11px; line-height: 1.5; }
+.plan-project-copy > div { display: flex; align-items: center; gap: 8px; color: var(--muted); font-size: 9px; }
+.plan-project-copy > div span { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.plan-project-copy > div b { margin-left: auto; flex: 0 0 auto; color: var(--brand-primary); font-size: 10px; }
+
+.resource-heading { margin-top: 62px; }
+.resource-library-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+.resource-visual { min-height: 136px; padding: 19px; border-bottom: 1px solid var(--line); background: #f2f4ff; }
+.resource-visual > span { color: var(--brand-primary); font-size: 9px; font-weight: 800; letter-spacing: 1px; }
+.resource-visual > strong { display: block; margin: 18px 0 3px; font-size: 40px; line-height: 1; }
+.resource-visual > p { margin: 0; color: var(--muted); font-size: 11px; }
+.collab-visual { background: #eff3ff; }
+.alert-visual { background: #fff8e8; }
+.alert-visual > span { color: #a66a00; }
+.method-resource .resource-visual { background: #172033; color: #fff; }
+.method-resource .resource-visual > span { color: #9eaeff; }
+.method-resource .resource-visual > p { color: #abb2bd; }
+.resource-copy { padding: 15px 16px 17px; }
+.resource-copy h3 { margin: 0 0 12px; font-size: 15px; }
+.resource-copy p { margin: 7px 0 0; color: var(--muted); font-size: 10px; line-height: 1.45; }
+.resource-copy p b { color: var(--ink); }
+
+.panel { border: 1px solid var(--line); border-radius: 13px; box-shadow: var(--shadow); }
+.arcade-completed-panel { overflow-x: auto; }
+.panel-head { padding: 17px 20px; }
+.panel-head h2 { font-size: 16px; }
+.metric-section { margin-top: 30px; }
+.metric-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; }
+.metric-card { min-height: 170px; border-radius: 13px; }
+.department-hero, .ledger-hero, .global-hero { min-height: 166px; border-radius: 13px; box-shadow: none; }
+.department-intro { padding-right: 185px; }
+.department-intro p, .ledger-hero .section-label, .global-hero .section-label, .section-label { color: var(--brand-primary); }
+.ledger-panel, .global-metric-panel, .department-main { margin-top: 26px; }
+.plan-table th, .ledger-table th, .global-metric-table th, .department-ledger-table th { background: #f5f6f8; color: #626a76; }
+.toast { background: #172033; }
+
+@media (max-width: 1280px) {
+  :root { --sidebar-width: 252px; }
+  .metric-library-grid, .plan-library-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .outline-button { right: 44px; }
+}
+
+@media (max-width: 880px) {
+  :root { --sidebar-width: 0px; }
+  body { padding: 0 0 74px; }
+  .app-header { inset: 0 0 auto; display: flex; width: 100%; height: 68px; padding: 14px 18px; align-items: center; background: rgba(255,255,255,.96); border-right: 0; border-bottom: 1px solid var(--line); backdrop-filter: blur(14px); }
+  .app-logo { width: 38px; height: 38px; }
+  .brand-block h1 { font-size: 17px; }
+  .sidebar-search, .demo-strip { display: none; }
+  .header-actions { inset: 68px 0 auto; display: flex; width: 100%; height: 54px; padding: 7px 66px 7px 12px; align-items: center; gap: 7px; border: 0; border-bottom: 1px solid var(--line); border-radius: 0; box-shadow: none; }
+  .header-actions::before { display: none; }
+  .period-switch { flex: 0 0 92px; }
+  .period-selector { min-width: 0; flex: 1; }
+  .period-selector select { width: 100%; }
+  .outline-button { position: fixed; top: 14px; right: 18px; width: 40px; height: 40px; padding: 0; }
+  .outline-button span { display: none; }
+  .department-tabs { inset: auto 0 0; width: 100%; height: 72px; padding: 10px 14px; flex-direction: row; align-items: center; gap: 7px; overflow-x: auto; overflow-y: hidden; background: rgba(255,255,255,.97); border-top: 1px solid var(--line); backdrop-filter: blur(14px); }
+  .sidebar-group-label { display: none; }
+  .department-tab { flex: 0 0 50px; width: 50px; height: 50px; padding: 0; justify-content: center; border-radius: 11px; }
+  .department-tab svg { width: 20px; height: 20px; }
+  .nav-label { display: none; }
+  #dashboardRoot { margin: 0; padding: 154px 18px 86px; }
+  .dashboard-greeting { padding-right: 0; }
+  .dashboard-greeting .sync-note { align-self: flex-start; }
+  .metric-library-grid, .plan-library-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .resource-library-grid { grid-template-columns: 1fr; }
+  .metric-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .library-section-head { align-items: flex-start; flex-direction: column; }
+  .library-section-head .panel-actions { width: 100%; align-items: center; flex-direction: row; }
+  .department-intro { padding-right: 30px; }
+}
+
+@media (max-width: 560px) {
+  .dashboard-greeting { margin-bottom: 23px; flex-direction: column; gap: 11px; }
+  .dashboard-greeting h2 { font-size: 29px; }
+  .arcade-toolbar { align-items: flex-start; gap: 12px; }
+  .library-filters { gap: 6px; overflow-x: auto; }
+  .library-filters button { flex: 0 0 auto; padding-inline: 12px; }
+  .library-view { display: none; }
+  .metric-library-grid, .plan-library-grid, .metric-grid { grid-template-columns: 1fr; }
+  .metric-library-preview { min-height: 190px; }
+  .library-section-head { margin-top: 48px; }
+  .library-section-head .panel-actions { align-items: stretch; flex-direction: column; }
+  .branch-switch, .filter-group { width: 100%; }
+  .branch-switch button, .filter-group button { flex: 1; }
+  .panel-head { align-items: flex-start; }
+}
+
+@media print {
+  .app-header, .department-tabs, .demo-strip, .outline-button { display: none !important; }
+  #dashboardRoot { margin: 0; padding: 20px; }
+}
+  </style>
 </head>
 <body>
   <!--
@@ -567,6 +830,7 @@ button, select { border-radius: 10px; }
         <p class="brand-period"><span>当前周期</span><strong id="dataPeriod">本周 · 2026年8月10日–14日</strong></p>
       </div>
     </div>
+    <label class="sidebar-search" aria-label="搜索看板"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-4-4"></path></svg><input id="sidebarSearch" type="search" placeholder="搜索看板" autocomplete="off"><kbd>⌘K</kbd></label>
     <div class="header-actions">
       <div class="period-switch" aria-label="周月维度切换">
         <button class="active" data-period="week">周</button>
@@ -881,9 +1145,12 @@ function navIcon(id) {
 }
 
 function renderTabs() {
-  const tabs = [['overall', '总览', '#4f2cf4'], ...Object.entries(departments).map(([id, d]) => [id, d.label, d.color]), ['global', '全局指标', '#4f2cf4'], ['ledger', '工作台账', '#4f2cf4']];
+  const overviewTab = [['overall', '经营总览', '#294BFF']];
+  const departmentTabs = Object.entries(departments).map(([id, d]) => [id, d.label, d.color]);
+  const toolTabs = [['global', '全局指标', '#294BFF'], ['ledger', '工作台账', '#294BFF']];
   const root = document.querySelector('#departmentTabs');
-  root.innerHTML = tabs.map(([id, label, color]) => `<button class="department-tab ${dashboardState.tab === id ? 'active' : ''}" data-tab="${id}" style="--tab-color:${color}" aria-label="${label}" title="${label}">${navIcon(id)}<span class="nav-label">${label}</span></button>`).join('');
+  const tabMarkup = ([id, label, color]) => `<button class="department-tab ${dashboardState.tab === id ? 'active' : ''}" data-tab="${id}" data-search-label="${label}" style="--tab-color:${color}" aria-label="${label}" title="${label}">${navIcon(id)}<span class="nav-label">${label}</span></button>`;
+  root.innerHTML = `<p class="sidebar-group-label">工作空间</p>${overviewTab.map(tabMarkup).join('')}<p class="sidebar-group-label">责任部门</p>${departmentTabs.map(tabMarkup).join('')}<p class="sidebar-group-label">管理工具</p>${toolTabs.map(tabMarkup).join('')}`;
   root.querySelectorAll('[data-tab]').forEach(button => button.addEventListener('click', () => {
     dashboardState.tab = button.dataset.tab;
     dashboardState.planFilter = 'all';
@@ -931,6 +1198,18 @@ function planRows(plans, includeDepartment = true) {
 
 function planTable(plans, includeDepartment = true) {
   return `<table class="plan-table"><thead><tr><th>工作与产出</th><th>负责人</th><th>协作部门</th><th>完成时间</th><th>完成进度</th><th>状态</th></tr></thead><tbody>${planRows(plans, includeDepartment)}</tbody></table>`;
+}
+
+function planCards(plans) {
+  const filtered = plans.filter(plan => dashboardState.planFilter === 'all' || plan[6] === dashboardState.planFilter);
+  return `<div class="plan-library-grid">${filtered.map((plan, index) => {
+    const department = departments[plan[0]];
+    const [title, output, owner, due, progress, status, collaborators] = plan.slice(1);
+    return `<article class="plan-project-card" data-plan-index="${index}" data-plan-source="overall" style="--dept-color:${department.color};--progress:${progress}%">
+      <div class="plan-project-visual"><div class="project-visual-top"><span>${department.short}</span>${statusTag(status)}</div><strong>${progress}%</strong><div class="project-progress"><i></i></div><small>${due} · ${owner}</small></div>
+      <div class="plan-project-copy"><h3>${title}</h3><p>${output}</p><div><span>${collaborators}</span><b>查看详情 →</b></div></div>
+    </article>`;
+  }).join('')}</div>`;
 }
 
 function filters() {
@@ -986,7 +1265,7 @@ function renderGlobalMetrics() {
 
 function trustTrendChart() {
   return `<svg class="trend-chart" viewBox="0 0 900 240" role="img" aria-label="品牌信任指数近十二周走势">
-    <defs><linearGradient id="trendGradient" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#6b4cf6" stop-opacity=".3"></stop><stop offset="1" stop-color="#6b4cf6" stop-opacity="0"></stop></linearGradient></defs>
+    <defs><linearGradient id="trendGradient" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff" stop-opacity=".28"></stop><stop offset="1" stop-color="#ffffff" stop-opacity="0"></stop></linearGradient></defs>
     <path class="grid" d="M30 42H875M30 90H875M30 138H875M30 186H875"></path>
     <path class="area" d="M30 184 C70 177 95 160 130 165 S200 149 235 152 S300 137 340 142 S410 120 455 128 S525 108 570 112 S640 88 680 96 S750 72 790 79 S842 58 875 63 L875 208 L30 208 Z"></path>
     <path class="line" d="M30 184 C70 177 95 160 130 165 S200 149 235 152 S300 137 340 142 S410 120 455 128 S525 108 570 112 S640 88 680 96 S750 72 790 79 S842 58 875 63"></path>
@@ -998,28 +1277,24 @@ function trustTrendChart() {
 function renderOverview() {
   const showingCompleted = dashboardState.overallWorkView === 'completed';
   const periodNoun = dashboardState.period === 'week' ? '本周' : '本月';
-  const metricAccounts = overallMetrics.map(([name, owner, target, current, achievement, color]) => `<article class="metric-account" style="--metric-color:${color};--achievement:${achievement}%">
-    <div class="metric-account-head"><i class="metric-dot"></i><strong>${name}</strong><b>${achievement}%</b></div>
-    <div class="metric-account-meta"><span>${owner}</span><span>${target}</span></div><div class="metric-account-line"><i></i></div>
+  const metricCards = overallMetrics.map(([name, owner, target, current, achievement, color], index) => `<article class="metric-library-card" style="--metric-color:${color};--achievement:${achievement}%">
+    <div class="metric-library-preview"><div class="metric-preview-head"><span>指标 ${String(index + 1).padStart(2, '0')}</span><i></i></div><strong>${achievement}%</strong><p>目标：${target}</p><div class="metric-preview-bars"><i></i><i></i><i></i><i></i><i></i></div></div>
+    <div class="metric-library-copy"><h3>${name}</h3><p>${owner} · ${current}</p><div><span class="metric-owner-dot"></span><span>${periodNoun}更新</span><b>↗</b></div></div>
   </article>`).join('');
-  return `<section class="dashboard-greeting"><div><p>${periodNoun}经营概览</p><h2>你好，ALA 团队 👋</h2></div><div class="sync-note"><i></i><span>数据口径已同步 · 演示模式</span></div></section>
-  <section class="executive-layout">
-    <aside class="panel accounts-panel"><div class="panel-head"><div><h2>核心指标</h2><p>统一查看目标、责任与进度</p></div><span class="side-count">${overallMetrics.length}项</span></div><div class="score-summary"><small>整体指标达成</small><div class="score-main"><strong>76%</strong><span>↑ 4.8</span></div></div><div class="metric-account-list">${metricAccounts}</div></aside>
-    <div class="executive-main">
-      <section class="panel trend-panel"><div class="trend-head"><div><p>品牌信任指数</p><div class="trend-value"><strong>76.4</strong><span>↑ 6.2%</span></div></div><div class="trend-legend"><i></i><span>近12周趋势</span></div></div>${trustTrendChart()}</section>
-      <div class="overview-mini-grid">
-        <article class="panel focus-card"><div class="mini-card-label"><h3>${periodNoun}优先关注</h3><span>3项需协同</span></div><div class="focus-items"><div><b>渠道用户质量</b><small>投放 × 风控</small></div><div><b>费用理解体验</b><small>产品 × 法务</small></div><div><b>困难用户方案</b><small>催收 × 消保</small></div></div></article>
-        <article class="panel method-card"><div class="mini-card-label"><h3>信任指数构成</h3><span>0–100分</span></div><div class="method-formula"><span>体验 25%</span><span>NPS 25%</span><span>投诉 20%</span><span>履约 15%</span><span>舆情 15%</span></div><p>各维度按统一规则标准化，由数据治理／PMO确认口径与更新时间。</p></article>
-      </div>
-    </div>
+  return `<section class="dashboard-greeting"><div><h2>品牌经营总览</h2><p>用统一指标、工作与证据持续经营 ALA 品牌信任</p></div><div class="sync-note"><i></i><span>数据口径已同步 · 演示模式</span></div></section>
+  <section class="arcade-toolbar"><div class="library-filters"><button class="active">全部指标⌄</button><button data-demo-control="状态筛选">状态⌄</button><button data-demo-control="责任人筛选">责任人⌄</button></div><div class="library-view"><button data-demo-control="排序">最近更新⌄</button><span class="active" aria-label="网格视图">▦</span><span aria-label="列表视图">☰</span></div></section>
+  <section class="metric-library-grid">
+    <article class="metric-library-card metric-feature-card"><div class="metric-library-preview"><span class="feature-kicker">ALA BRAND TRUST</span><strong>76.4</strong><p>品牌信任指数 · 较上期 +6.2%</p>${trustTrendChart()}</div><div class="metric-library-copy"><h3>整体信任表现</h3><p>体验、推荐、投诉、履约与舆情</p><div><span class="feature-status">重点指标</span><span>${periodNoun}更新</span><b>↗</b></div></div></article>
+    ${metricCards}
   </section>
-  <div class="overview-grid">
-    <section class="panel"><div class="panel-head"><div><h2>工作计划</h2><p>${showingCompleted ? '查看过去完成的工作、交付证据和验证状态' : `查看${periodNoun}工作、明确产出、责任人与完成进度`}</p></div><div class="panel-actions"><div class="branch-switch"><button class="${showingCompleted ? '' : 'active'}" data-overall-work-view="active">进行中 <b>${overallPlans.length}</b></button><button class="${showingCompleted ? 'active' : ''}" data-overall-work-view="completed">已完成 <b>${completedLedger.length}</b></button></div>${filters()}</div></div>${showingCompleted ? completedWorkTable(completedLedger, true) : planTable(overallPlans, true)}</section>
-    <aside class="side-stack">
-      <section class="panel"><div class="panel-head"><div><h2>跨部门协同</h2><p>需要两个以上部门共同完成</p></div><span class="side-count">${collaborations.length}项</span></div><div class="collab-list">${collaborations.map(c => `<article class="collab-item" style="--route-color:${c[3]}"><h3>${c[1]}</h3><div class="collab-route"><b>${c[0]}</b><span>→</span><span>共同交付</span></div><p>${c[2]}</p></article>`).join('')}</div></section>
-      <section class="panel"><div class="panel-head"><div><h2>本周提醒</h2><p>仅显示需要管理关注的事项</p></div><span class="side-count">${alerts.length}项</span></div><div class="alert-list">${alerts.map(a => `<article class="alert-item"><h3>${a[0]}</h3><p>${a[1]}</p></article>`).join('')}</div></section>
-    </aside>
-  </div>`;
+  <section class="library-section-head"><div><h2>工作计划</h2><p>${showingCompleted ? '查看过去完成的工作、交付证据和验证状态' : `查看${periodNoun}工作、明确产出、责任人与完成进度`}</p></div><div class="panel-actions"><div class="branch-switch"><button class="${showingCompleted ? '' : 'active'}" data-overall-work-view="active">进行中 <b>${overallPlans.length}</b></button><button class="${showingCompleted ? 'active' : ''}" data-overall-work-view="completed">已完成 <b>${completedLedger.length}</b></button></div>${filters()}</div></section>
+  ${showingCompleted ? `<section class="panel arcade-completed-panel">${completedWorkTable(completedLedger, true)}</section>` : planCards(overallPlans)}
+  <section class="library-section-head resource-heading"><div><h2>协同与提醒</h2><p>集中查看跨部门依赖和需要管理关注的事项</p></div></section>
+  <section class="resource-library-grid">
+    <article class="resource-library-card"><div class="resource-visual collab-visual"><span>COLLABORATION</span><strong>${collaborations.length}</strong><p>项跨部门共同交付</p></div><div class="resource-copy"><h3>跨部门协同</h3>${collaborations.map(c => `<p><b style="color:${c[3]}">${c[0]}</b> · ${c[1]}</p>`).join('')}</div></article>
+    <article class="resource-library-card"><div class="resource-visual alert-visual"><span>ATTENTION</span><strong>${alerts.length}</strong><p>项需要管理关注</p></div><div class="resource-copy"><h3>${periodNoun}提醒</h3>${alerts.map(a => `<p><b>${a[0]}</b> · ${a[1]}</p>`).join('')}</div></article>
+    <article class="resource-library-card method-resource"><div class="resource-visual"><span>TRUST MODEL</span><strong>5</strong><p>个信任指数维度</p></div><div class="resource-copy"><h3>信任指数构成</h3><p>体验 25% · NPS 25% · 投诉 20%</p><p>履约 15% · 正向舆情 15%</p></div></article>
+  </section>`;
 }
 
 function completedWorkTable(items, includeDepartment = false) {
@@ -1072,6 +1347,7 @@ function bindDynamicEvents() {
     renderDashboard();
   });
   document.querySelectorAll('[data-plan-index]').forEach(row => row.addEventListener('click', () => openPlan(row.dataset.planSource, Number(row.dataset.planIndex))));
+  document.querySelectorAll('[data-demo-control]').forEach(button => button.addEventListener('click', () => showToast(`${button.dataset.demoControl}将在接入真实数据后启用`)));
 }
 
 function openPlan(source, filteredIndex) {
@@ -1121,6 +1397,10 @@ function init() {
   document.querySelector('#closeModal').addEventListener('click', () => document.querySelector('#planModal').classList.remove('open'));
   document.querySelector('#planModal').addEventListener('click', event => { if (event.target.id === 'planModal') event.currentTarget.classList.remove('open'); });
   document.querySelector('#exportDashboard').addEventListener('click', () => { showToast('已进入打印／导出模式'); setTimeout(() => window.print(), 300); });
+  document.querySelector('#sidebarSearch').addEventListener('input', event => {
+    const query = event.target.value.trim().toLowerCase();
+    document.querySelectorAll('.department-tab').forEach(button => { button.hidden = query && !button.dataset.searchLabel.toLowerCase().includes(query); });
+  });
 }
 
 init();
