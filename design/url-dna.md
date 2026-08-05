@@ -1,23 +1,23 @@
-# Arcade-inspired interface DNA
+# OpenAI Platform-inspired interface DNA
 
-Reference: Mobbin’s Arcade Web “My Library” screen supplied by the user.
+Reference: Mobbin’s OpenAI Platform Web application screen supplied by the user.
 
 ## Visual system
 
-- Canvas: white main workspace with a very light gray navigation rail (`#f7f8fa`).
-- Primary: ALA blue (`#294BFF`) used for active navigation, primary actions, focus states, and key values.
-- Text: deep ink (`#172033`) with cool gray secondary copy (`#747b87`).
-- Surfaces: 12–14px corner radius, visible 1px neutral borders, almost no shadow.
-- Type scale: 11–12px labels, 13–14px metadata/body, 16px card titles, 30–34px page headings, 36–48px key values.
-- Spacing: 4px base rhythm; 20px card gaps; 24px internal card padding; approximately 56–64px vertical section separation.
+- Shell: very light gray application background (`#f3f3f3`) with one white bordered workspace panel.
+- Primary: ALA blue (`#294BFF`) is reserved for the main action, progress, and selected data emphasis.
+- Text: near-black (`#1f1f1f`) with middle gray secondary copy (`#777777`).
+- Surfaces: 8–14px corner radius, 1px neutral borders, no decorative shadows except slight elevation on compact summary cards.
+- Type scale: 11–12px labels, 13–14px body and navigation, 18–20px section titles, 24–28px page titles, 32–38px key values.
+- Spacing: 4px base rhythm; 12–16px component gaps; 24–28px panel padding; 40–48px between major sections.
 
 ## Layout grammar
 
-- A 304px text navigation rail anchors the application on the left.
-- Main content is centered in a roughly 1320px workspace with generous outer whitespace.
-- The page starts with a simple title/action row, followed by quiet filter controls.
-- Primary content uses a four-column library grid: visual preview first, then title and metadata.
-- Operational sections repeat the same grid rhythm before switching to tables where dense comparison is necessary.
+- A 68px global header carries workspace identity, period controls, and the primary export action.
+- A 260px left rail groups navigation into clear responsibility areas.
+- The main workspace sits inside one white, rounded, bordered panel rather than many decorative containers.
+- The page starts with a quiet title, then one focused governance summary and four compact statistics.
+- Trend, attention items, key metrics, and work plans use restrained cards and dense tables suited to operational comparison.
 
 ## ALA adaptation
 
@@ -25,3 +25,4 @@ Reference: Mobbin’s Arcade Web “My Library” screen supplied by the user.
 - Replace Quicken-specific financial language and assets with ALA brand-governance concepts.
 - Use the reference’s layout and visual rhythm, not its trademarks or source code.
 - Preserve department colors only as small semantic dots or tags; `#294BFF` remains the interface-wide primary color.
+- Prefer hierarchy, alignment, and whitespace over gradients or oversized preview blocks.

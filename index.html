@@ -812,6 +812,255 @@ body { padding: 0; overflow-x: hidden; }
   #dashboardRoot { margin: 0; padding: 20px; }
 }
   </style>
+  <style id="openai-platform-inspired-redesign">
+:root {
+  --platform-sidebar: 260px;
+  --platform-bg: #f3f3f3;
+  --platform-surface: #ffffff;
+  --platform-text: #1f1f1f;
+  --platform-muted: #777777;
+  --platform-border: #dedede;
+  --platform-hover: #e8e8e8;
+  --platform-active: #dedede;
+  --brand-primary: #294BFF;
+  --purple: #294BFF;
+  --ink: #1f1f1f;
+  --muted: #777777;
+  --line: #dedede;
+  --soft: #f3f3f3;
+  --shadow: 0 2px 5px rgba(0,0,0,.04);
+}
+
+html, body { background: var(--platform-bg); color: var(--platform-text); }
+body { padding: 0; }
+
+.app-header {
+  position: fixed; inset: 0 0 auto; z-index: 70;
+  display: flex; width: 100%; height: 68px; margin: 0; padding: 0 22px;
+  justify-content: flex-start; align-items: center; background: var(--platform-bg);
+  border: 0; box-shadow: none; backdrop-filter: none;
+}
+.brand-block { gap: 10px; }
+.app-logo { width: 32px; height: 32px; border-radius: 50%; box-shadow: none; }
+.brand-copy { display: flex; min-width: 0; flex-direction: row; align-items: center; gap: 10px; }
+.brand-block h1 { margin: 0; font-size: 15px; font-weight: 700; letter-spacing: 0; }
+.brand-period { display: flex; margin: 0; align-items: center; gap: 10px; color: #777; font-size: 12px; }
+.brand-period::before { content: "/"; color: #9a9a9a; }
+.brand-period span { display: none; }
+.brand-period strong { color: #4e4e4e; font-size: 12px; font-weight: 550; }
+.sidebar-search { display: none; }
+
+.header-actions {
+  position: static; display: flex; width: auto; margin-left: auto; padding: 0;
+  grid-template-columns: none; align-items: center; gap: 9px;
+  border: 0; border-radius: 0; background: transparent; box-shadow: none;
+}
+.header-actions::before { display: none; }
+.period-switch { width: 82px; height: 38px; padding: 3px; border: 0; border-radius: 9px; background: #e7e7e7; }
+.period-switch button { min-width: 36px; height: 32px; padding: 0 8px; border-radius: 7px; color: #666; font-size: 11px; }
+.period-switch button.active { background: #fff; color: var(--platform-text); box-shadow: 0 1px 3px rgba(0,0,0,.08); }
+.period-selector { width: 270px; min-width: 0; }
+.period-selector small { display: none; }
+.period-selector select { height: 38px; padding: 0 28px 0 11px; border: 1px solid #d7d7d7; border-radius: 9px; background: #fff; color: #444; font-size: 11px; font-weight: 550; }
+.outline-button {
+  position: static; display: inline-flex; width: 116px; height: 40px; padding: 0 14px;
+  border: 0; border-radius: 999px; background: var(--brand-primary); color: #fff;
+  font-size: 12px; box-shadow: none;
+}
+.outline-button:hover { background: #1939db; }
+
+.department-tabs {
+  position: fixed; inset: 68px auto 0 0; z-index: 55;
+  display: flex; width: var(--platform-sidebar); height: auto; padding: 12px 14px 58px;
+  flex-direction: column; align-items: stretch; gap: 3px; overflow-x: hidden; overflow-y: auto;
+  background: var(--platform-bg); border: 0; box-shadow: none;
+}
+.department-tabs::before { display: none; }
+.sidebar-group-label { margin: 16px 16px 6px; color: #919191; font-size: 11px; font-weight: 500; letter-spacing: 0; }
+.sidebar-group-label:first-child { margin-top: 7px; }
+.department-tab {
+  display: flex; flex: 0 0 40px; width: 100%; min-width: 0; height: 40px;
+  justify-content: flex-start; align-items: center; gap: 11px; padding: 0 14px;
+  border: 0; border-radius: 8px; background: transparent; color: #333;
+  font-size: 13px; font-weight: 500;
+}
+.department-tab svg { width: 18px; height: 18px; flex: 0 0 18px; stroke-width: 1.8; }
+.department-tab:hover { background: var(--platform-hover); color: #111; }
+.department-tab.active { background: var(--platform-active); color: #111; box-shadow: none; }
+.nav-label { position: static; display: inline; opacity: 1; transform: none; padding: 0; background: transparent; color: inherit; font-size: inherit; }
+.demo-strip {
+  position: fixed; inset: auto auto 18px 28px; z-index: 60;
+  display: block; width: 205px; height: auto; padding: 0;
+  background: transparent; border: 0; color: #8b7651;
+  font-size: 9px; font-weight: 500; line-height: 1.45; text-align: left;
+}
+
+#dashboardRoot {
+  max-width: none; min-height: calc(100vh - 80px); margin: 68px 12px 12px calc(var(--platform-sidebar) + 12px);
+  padding: 26px 26px 64px; background: var(--platform-surface);
+  border: 1px solid var(--platform-border); border-radius: 10px;
+}
+#dashboardRoot > * { width: 100%; max-width: 1280px; }
+
+.platform-page-head { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 42px; }
+.platform-page-head h1 { margin: 0 0 6px; font-size: 23px; line-height: 1.2; font-weight: 700; letter-spacing: -.35px; }
+.platform-page-head p { margin: 0; color: var(--platform-muted); font-size: 12px; }
+.platform-sync { display: flex; align-items: center; gap: 7px; margin-top: 4px; color: #777; font-size: 10px; }
+.platform-sync i { width: 7px; height: 7px; border-radius: 50%; background: #19a45b; box-shadow: 0 0 0 4px #eaf7ef; }
+
+.platform-focus-panel {
+  display: flex; max-width: 1050px !important; min-height: 168px; justify-content: space-between; align-items: center; gap: 40px;
+  padding: 30px 36px; border: 1px solid #e1e1e1; border-radius: 14px; background: #fff;
+}
+.platform-focus-panel > div { max-width: 720px; }
+.platform-eyebrow { margin: 0 0 9px !important; color: var(--brand-primary) !important; font-size: 10px !important; font-weight: 700; letter-spacing: .7px; text-transform: uppercase; }
+.platform-focus-panel h2 { margin: 0 0 8px; font-size: 27px; line-height: 1.2; font-weight: 650; letter-spacing: -.7px; }
+.platform-focus-panel > div > p { margin: 0; color: #6f6f6f; font-size: 12px; line-height: 1.55; }
+.platform-topic-list { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 17px; }
+.platform-topic-list span { padding: 7px 11px; border-radius: 999px; background: #ededed; color: #333; font-size: 10px; font-weight: 550; }
+.platform-focus-panel > button {
+  display: flex; min-width: 142px; height: 46px; align-items: center; justify-content: center; gap: 10px;
+  padding: 0 16px; border: 0; border-radius: 999px; background: #1f1f1f; color: #fff; font-size: 11px; font-weight: 650;
+}
+.platform-focus-panel > button:hover { background: #333; }
+
+.platform-stat-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; margin-top: 38px; }
+.platform-stat-grid article { min-height: 132px; padding: 17px 18px; border: 1px solid #e0e0e0; border-radius: 13px; background: #fff; box-shadow: var(--shadow); }
+.platform-stat-grid article > div { display: flex; justify-content: space-between; align-items: center; }
+.platform-stat-grid article span { color: #3f3f3f; font-size: 11px; font-weight: 600; }
+.platform-stat-grid article small { color: #909090; font-size: 9px; }
+.platform-stat-grid article strong { display: block; margin-top: 21px; font-size: 34px; line-height: 1; font-weight: 650; letter-spacing: -1.2px; }
+.platform-stat-grid article p { margin: 9px 0 0; color: #7d7d7d; font-size: 9px; }
+.platform-stat-grid article p.positive { color: #16894b; }
+.platform-stat-grid article p.attention-text { color: #a26700; }
+
+.platform-overview-grid { display: grid; grid-template-columns: minmax(0, 1.65fr) minmax(310px, .75fr); gap: 14px; margin-top: 14px; }
+.platform-card { overflow: hidden; border: 1px solid #e0e0e0; border-radius: 13px; background: #fff; box-shadow: var(--shadow); }
+.platform-card > header { display: flex; min-height: 67px; justify-content: space-between; align-items: center; padding: 15px 18px; border-bottom: 1px solid #e7e7e7; }
+.platform-card > header h2 { margin: 0; font-size: 14px; font-weight: 650; }
+.platform-card > header p { margin: 4px 0 0; color: #888; font-size: 9px; }
+.platform-card > header > span { padding: 5px 8px; border-radius: 999px; background: #efefef; color: #666; font-size: 9px; }
+.platform-trend-card { position: relative; min-height: 330px; }
+.platform-trend-value { display: flex; align-items: baseline; gap: 11px; padding: 18px 20px 0; }
+.platform-trend-value strong { font-size: 34px; line-height: 1; font-weight: 650; letter-spacing: -1.2px; }
+.platform-trend-value span { color: #18894c; font-size: 9px; }
+.platform-trend-card .trend-chart { width: calc(100% - 30px); height: 205px; margin: 1px 15px 10px; }
+.platform-trend-card .trend-chart .line { stroke: var(--brand-primary); stroke-width: 3; }
+.platform-trend-card .trend-chart .grid { stroke: #e7e7e7; }
+.platform-trend-card .trend-chart .dot { fill: #fff; stroke: var(--brand-primary); }
+.platform-trend-card .trend-chart text { fill: #8b8b8b; }
+
+.platform-priority-list { padding: 4px 17px 8px; }
+.platform-priority-list > div { display: grid; grid-template-columns: 8px minmax(0, 1fr) auto; align-items: center; gap: 10px; padding: 15px 0; border-bottom: 1px solid #ebebeb; }
+.platform-priority-list > div:last-child { border-bottom: 0; }
+.platform-priority-list i { width: 7px; height: 7px; border-radius: 50%; background: #e29a18; }
+.platform-priority-list > div:nth-child(2) i { background: var(--brand-primary); }
+.platform-priority-list p { margin: 0; }
+.platform-priority-list p strong, .platform-priority-list p span { display: block; }
+.platform-priority-list p strong { margin-bottom: 4px; font-size: 11px; font-weight: 600; }
+.platform-priority-list p span { color: #888; font-size: 9px; line-height: 1.4; }
+.platform-priority-list > div > b { padding: 5px 7px; border-radius: 999px; background: #f3f3f3; color: #777; font-size: 8px; font-weight: 550; }
+
+.platform-section-head { display: flex; justify-content: space-between; align-items: flex-end; margin: 42px 0 14px; }
+.platform-section-head h2 { margin: 0; font-size: 18px; font-weight: 650; letter-spacing: -.2px; }
+.platform-section-head p { margin: 5px 0 0; color: #838383; font-size: 10px; }
+.platform-section-head > button { height: 34px; padding: 0 12px; border: 1px solid #d8d8d8; border-radius: 8px; background: #fff; color: #444; font-size: 10px; }
+
+.platform-metrics-card { overflow-x: auto; }
+.platform-metric-row { display: grid; min-width: 860px; grid-template-columns: 1.45fr .95fr .8fr .85fr 1.1fr; align-items: center; gap: 15px; min-height: 55px; padding: 0 17px; border-bottom: 1px solid #ededed; color: #666; font-size: 10px; }
+.platform-metric-row:last-child { border-bottom: 0; }
+.platform-metric-header { min-height: 40px; background: #f7f7f7; color: #8b8b8b; font-size: 9px; }
+.platform-metric-name { display: flex; align-items: center; gap: 9px; }
+.platform-metric-name > i { width: 7px; height: 7px; border-radius: 50%; background: var(--metric-color); }
+.platform-metric-name strong { color: #2c2c2c; font-size: 11px; font-weight: 600; }
+.platform-metric-progress { display: flex; align-items: center; gap: 9px; }
+.platform-metric-progress b { min-width: 30px; color: #333; font-size: 10px; }
+.platform-metric-progress em { display: block; width: 100%; height: 5px; overflow: hidden; border-radius: 99px; background: #ededed; }
+.platform-metric-progress em i { display: block; width: var(--achievement); height: 100%; border-radius: inherit; background: var(--brand-primary); }
+
+.platform-work-head { align-items: center; }
+.platform-work-head .panel-actions { flex-direction: row; align-items: center; }
+.platform-work-card { overflow-x: auto; }
+.platform-work-card .plan-table { min-width: 980px; }
+.platform-work-card .plan-table th { padding: 11px 13px; background: #f7f7f7; color: #777; font-size: 9px; font-weight: 600; }
+.platform-work-card .plan-table td { padding: 13px; border-color: #ededed; color: #555; font-size: 10px; }
+.platform-work-card .work-title { color: #222; font-size: 11px; font-weight: 600; }
+.platform-work-card .work-output { font-size: 9px; }
+.platform-work-card .status-tag { padding: 4px 7px; font-size: 8px; }
+.branch-switch, .filter-group { border: 0; border-radius: 8px; background: #eeeeee; }
+.branch-switch button, .filter-group button { min-height: 32px; border-radius: 7px; font-size: 9px; }
+.branch-switch button.active, .filter-group button.active { background: #fff; color: #222; box-shadow: 0 1px 3px rgba(0,0,0,.08); }
+
+.platform-bottom-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 42px; }
+.platform-simple-list { padding: 3px 17px 7px; }
+.platform-simple-list > div { display: grid; grid-template-columns: 7px minmax(0, 1fr) auto; align-items: center; gap: 10px; padding: 14px 0; border-bottom: 1px solid #ededed; }
+.platform-simple-list > div:last-child { border-bottom: 0; }
+.platform-simple-list i { width: 7px; height: 7px; border-radius: 50%; }
+.platform-simple-list i.alert-dot { background: #e29a18; }
+.platform-simple-list p { margin: 0; }
+.platform-simple-list strong, .platform-simple-list span { display: block; }
+.platform-simple-list strong { margin-bottom: 3px; color: #2d2d2d; font-size: 10px; font-weight: 600; }
+.platform-simple-list span { overflow: hidden; color: #888; font-size: 9px; line-height: 1.4; text-overflow: ellipsis; white-space: nowrap; }
+.platform-simple-list b { color: #777; font-size: 11px; }
+
+.panel { border: 1px solid #e0e0e0; border-radius: 12px; box-shadow: none; }
+.department-hero, .ledger-hero, .global-hero { border: 1px solid #e0e0e0; border-radius: 12px; box-shadow: none; }
+.department-intro { padding-right: 170px; }
+.metric-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.metric-card { border-radius: 12px; box-shadow: none; }
+.plan-table th, .ledger-table th, .global-metric-table th, .department-ledger-table th { background: #f7f7f7; color: #777; }
+
+@media (max-width: 1240px) {
+  .brand-period { display: none; }
+  .period-selector { width: 220px; }
+  .platform-stat-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .platform-overview-grid { grid-template-columns: 1fr; }
+  .metric-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+@media (max-width: 860px) {
+  :root { --platform-sidebar: 0px; }
+  body { padding-bottom: 70px; }
+  .app-header { height: 66px; padding: 0 16px; background: rgba(243,243,243,.96); backdrop-filter: blur(14px); }
+  .brand-period { display: none; }
+  .header-actions { position: fixed; inset: 66px 0 auto; height: 54px; padding: 8px 64px 8px 12px; background: rgba(243,243,243,.97); border-bottom: 1px solid #dedede; }
+  .period-switch { flex: 0 0 82px; }
+  .period-selector { min-width: 0; flex: 1; width: auto; }
+  .period-selector select { width: 100%; }
+  .outline-button { position: fixed; top: 13px; right: 16px; width: 40px; height: 40px; padding: 0; }
+  .outline-button span { display: none; }
+  .department-tabs { inset: auto 0 0; width: 100%; height: 70px; padding: 10px 12px; flex-direction: row; align-items: center; gap: 6px; overflow-x: auto; overflow-y: hidden; background: rgba(243,243,243,.97); border-top: 1px solid #dedede; backdrop-filter: blur(14px); }
+  .sidebar-group-label { display: none; }
+  .department-tab { flex: 0 0 48px; width: 48px; height: 48px; padding: 0; justify-content: center; }
+  .nav-label { display: none; }
+  .demo-strip { display: none; }
+  #dashboardRoot { min-height: calc(100vh - 132px); margin: 120px 8px 8px; padding: 20px 18px 54px; }
+  .platform-page-head { flex-direction: column; gap: 12px; margin-bottom: 30px; }
+  .platform-focus-panel { align-items: flex-start; flex-direction: column; gap: 22px; padding: 25px; }
+  .platform-focus-panel > button { min-width: 0; }
+  .platform-bottom-grid { grid-template-columns: 1fr; }
+  .platform-work-head { align-items: flex-start; flex-direction: column; gap: 14px; }
+  .platform-work-head .panel-actions { width: 100%; }
+  .metric-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .department-intro { padding-right: 26px; }
+}
+
+@media (max-width: 560px) {
+  .platform-focus-panel h2 { font-size: 23px; }
+  .platform-stat-grid { grid-template-columns: 1fr 1fr; gap: 9px; }
+  .platform-stat-grid article { min-height: 122px; padding: 15px; }
+  .platform-stat-grid article strong { font-size: 30px; }
+  .platform-work-head .panel-actions { align-items: stretch; flex-direction: column; }
+  .branch-switch, .filter-group { width: 100%; }
+  .branch-switch button, .filter-group button { flex: 1; }
+  .metric-grid { grid-template-columns: 1fr; }
+}
+
+@media print {
+  .app-header, .department-tabs, .demo-strip, .outline-button { display: none !important; }
+  #dashboardRoot { margin: 0; border: 0; }
+}
+  </style>
 </head>
 <body>
   <!--
@@ -1265,7 +1514,7 @@ function renderGlobalMetrics() {
 
 function trustTrendChart() {
   return `<svg class="trend-chart" viewBox="0 0 900 240" role="img" aria-label="品牌信任指数近十二周走势">
-    <defs><linearGradient id="trendGradient" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff" stop-opacity=".28"></stop><stop offset="1" stop-color="#ffffff" stop-opacity="0"></stop></linearGradient></defs>
+    <defs><linearGradient id="trendGradient" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#294BFF" stop-opacity=".18"></stop><stop offset="1" stop-color="#294BFF" stop-opacity="0"></stop></linearGradient></defs>
     <path class="grid" d="M30 42H875M30 90H875M30 138H875M30 186H875"></path>
     <path class="area" d="M30 184 C70 177 95 160 130 165 S200 149 235 152 S300 137 340 142 S410 120 455 128 S525 108 570 112 S640 88 680 96 S750 72 790 79 S842 58 875 63 L875 208 L30 208 Z"></path>
     <path class="line" d="M30 184 C70 177 95 160 130 165 S200 149 235 152 S300 137 340 142 S410 120 455 128 S525 108 570 112 S640 88 680 96 S750 72 790 79 S842 58 875 63"></path>
@@ -1277,23 +1526,30 @@ function trustTrendChart() {
 function renderOverview() {
   const showingCompleted = dashboardState.overallWorkView === 'completed';
   const periodNoun = dashboardState.period === 'week' ? '本周' : '本月';
-  const metricCards = overallMetrics.map(([name, owner, target, current, achievement, color], index) => `<article class="metric-library-card" style="--metric-color:${color};--achievement:${achievement}%">
-    <div class="metric-library-preview"><div class="metric-preview-head"><span>指标 ${String(index + 1).padStart(2, '0')}</span><i></i></div><strong>${achievement}%</strong><p>目标：${target}</p><div class="metric-preview-bars"><i></i><i></i><i></i><i></i><i></i></div></div>
-    <div class="metric-library-copy"><h3>${name}</h3><p>${owner} · ${current}</p><div><span class="metric-owner-dot"></span><span>${periodNoun}更新</span><b>↗</b></div></div>
-  </article>`).join('');
-  return `<section class="dashboard-greeting"><div><h2>品牌经营总览</h2><p>用统一指标、工作与证据持续经营 ALA 品牌信任</p></div><div class="sync-note"><i></i><span>数据口径已同步 · 演示模式</span></div></section>
-  <section class="arcade-toolbar"><div class="library-filters"><button class="active">全部指标⌄</button><button data-demo-control="状态筛选">状态⌄</button><button data-demo-control="责任人筛选">责任人⌄</button></div><div class="library-view"><button data-demo-control="排序">最近更新⌄</button><span class="active" aria-label="网格视图">▦</span><span aria-label="列表视图">☰</span></div></section>
-  <section class="metric-library-grid">
-    <article class="metric-library-card metric-feature-card"><div class="metric-library-preview"><span class="feature-kicker">ALA BRAND TRUST</span><strong>76.4</strong><p>品牌信任指数 · 较上期 +6.2%</p>${trustTrendChart()}</div><div class="metric-library-copy"><h3>整体信任表现</h3><p>体验、推荐、投诉、履约与舆情</p><div><span class="feature-status">重点指标</span><span>${periodNoun}更新</span><b>↗</b></div></div></article>
-    ${metricCards}
+  const ontrackCount = overallPlans.filter(plan => plan[6] === 'ontrack').length;
+  const attentionCount = overallPlans.filter(plan => plan[6] === 'attention').length;
+  const metricRows = overallMetrics.map(([name, owner, target, current, achievement, color]) => `<div class="platform-metric-row" style="--metric-color:${color};--achievement:${achievement}%">
+    <div class="platform-metric-name"><i></i><strong>${name}</strong></div><span>${owner}</span><span>${target}</span><span>${current}</span><div class="platform-metric-progress"><b>${achievement}%</b><em><i></i></em></div>
+  </div>`).join('');
+  return `<section class="platform-page-head"><div><h1>品牌经营总览</h1><p>用统一指标、工作与证据持续经营 ALA 品牌信任</p></div><div class="platform-sync"><i></i><span>数据口径已同步 · 演示模式</span></div></section>
+  <section class="platform-focus-panel"><div><p class="platform-eyebrow">${periodNoun}治理重点</p><h2>建立可持续的品牌信任</h2><p>优先解决渠道用户质量、费用理解和困难用户方案，确保体验、表达与履约保持一致。</p><div class="platform-topic-list"><span>渠道质量</span><span>费用理解</span><span>困难用户</span><span>跨部门闭环</span></div></div><button data-demo-control="重点事项视图"><span>查看重点事项</span><b>→</b></button></section>
+  <section class="platform-stat-grid">
+    <article><div><span>品牌信任指数</span><small>较上期</small></div><strong>76.4</strong><p class="positive">↑ 6.2%</p></article>
+    <article><div><span>按计划推进</span><small>${periodNoun}</small></div><strong>${ontrackCount}</strong><p>共 ${overallPlans.length} 项工作</p></article>
+    <article><div><span>需要关注</span><small>${periodNoun}</small></div><strong>${attentionCount}</strong><p class="attention-text">等待协同关闭</p></article>
+    <article><div><span>已完成台账</span><small>本月</small></div><strong>${completedLedger.length}</strong><p>持续保留交付证据</p></article>
   </section>
-  <section class="library-section-head"><div><h2>工作计划</h2><p>${showingCompleted ? '查看过去完成的工作、交付证据和验证状态' : `查看${periodNoun}工作、明确产出、责任人与完成进度`}</p></div><div class="panel-actions"><div class="branch-switch"><button class="${showingCompleted ? '' : 'active'}" data-overall-work-view="active">进行中 <b>${overallPlans.length}</b></button><button class="${showingCompleted ? 'active' : ''}" data-overall-work-view="completed">已完成 <b>${completedLedger.length}</b></button></div>${filters()}</div></section>
-  ${showingCompleted ? `<section class="panel arcade-completed-panel">${completedWorkTable(completedLedger, true)}</section>` : planCards(overallPlans)}
-  <section class="library-section-head resource-heading"><div><h2>协同与提醒</h2><p>集中查看跨部门依赖和需要管理关注的事项</p></div></section>
-  <section class="resource-library-grid">
-    <article class="resource-library-card"><div class="resource-visual collab-visual"><span>COLLABORATION</span><strong>${collaborations.length}</strong><p>项跨部门共同交付</p></div><div class="resource-copy"><h3>跨部门协同</h3>${collaborations.map(c => `<p><b style="color:${c[3]}">${c[0]}</b> · ${c[1]}</p>`).join('')}</div></article>
-    <article class="resource-library-card"><div class="resource-visual alert-visual"><span>ATTENTION</span><strong>${alerts.length}</strong><p>项需要管理关注</p></div><div class="resource-copy"><h3>${periodNoun}提醒</h3>${alerts.map(a => `<p><b>${a[0]}</b> · ${a[1]}</p>`).join('')}</div></article>
-    <article class="resource-library-card method-resource"><div class="resource-visual"><span>TRUST MODEL</span><strong>5</strong><p>个信任指数维度</p></div><div class="resource-copy"><h3>信任指数构成</h3><p>体验 25% · NPS 25% · 投诉 20%</p><p>履约 15% · 正向舆情 15%</p></div></article>
+  <section class="platform-overview-grid">
+    <article class="platform-card platform-trend-card"><header><div><h2>品牌信任趋势</h2><p>近十二周综合指数</p></div><span>0–100分</span></header><div class="platform-trend-value"><strong>76.4</strong><span>+4.8 本周期</span></div>${trustTrendChart()}</article>
+    <article class="platform-card platform-priority-card"><header><div><h2>优先事项</h2><p>需要管理关注</p></div><span>${attentionCount}项</span></header><div class="platform-priority-list"><div><i></i><p><strong>渠道用户质量</strong><span>投放 × 风控 · 等待规则确认</span></p><b>需关注</b></div><div><i></i><p><strong>费用理解体验</strong><span>产品 × 法务 · 补充表达检查</span></p><b>进行中</b></div><div><i></i><p><strong>困难用户方案</strong><span>催收 × 消保 · 明确授权边界</span></p><b>需关注</b></div></div></article>
+  </section>
+  <section class="platform-section-head"><div><h2>关键指标</h2><p>目标、当前值、责任人与达成进度</p></div><button data-demo-control="指标管理">管理指标</button></section>
+  <section class="platform-card platform-metrics-card"><div class="platform-metric-row platform-metric-header"><span>指标</span><span>责任人</span><span>目标</span><span>当前</span><span>达成进度</span></div>${metricRows}</section>
+  <section class="platform-section-head platform-work-head"><div><h2>工作计划</h2><p>${showingCompleted ? '查看过去完成的工作、交付证据和验证状态' : `查看${periodNoun}工作、责任人与完成进度`}</p></div><div class="panel-actions"><div class="branch-switch"><button class="${showingCompleted ? '' : 'active'}" data-overall-work-view="active">进行中 <b>${overallPlans.length}</b></button><button class="${showingCompleted ? 'active' : ''}" data-overall-work-view="completed">已完成 <b>${completedLedger.length}</b></button></div>${filters()}</div></section>
+  <section class="platform-card platform-work-card">${showingCompleted ? completedWorkTable(completedLedger, true) : planTable(overallPlans, true)}</section>
+  <section class="platform-bottom-grid">
+    <article class="platform-card"><header><div><h2>跨部门协同</h2><p>两个以上部门共同交付</p></div><span>${collaborations.length}项</span></header><div class="platform-simple-list">${collaborations.map(c => `<div><i style="background:${c[3]}"></i><p><strong>${c[1]}</strong><span>${c[0]} · ${c[2]}</span></p><b>→</b></div>`).join('')}</div></article>
+    <article class="platform-card"><header><div><h2>${periodNoun}提醒</h2><p>仅显示管理关注事项</p></div><span>${alerts.length}项</span></header><div class="platform-simple-list">${alerts.map(a => `<div><i class="alert-dot"></i><p><strong>${a[0]}</strong><span>${a[1]}</span></p><b>→</b></div>`).join('')}</div></article>
   </section>`;
 }
 
