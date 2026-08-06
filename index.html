@@ -1061,6 +1061,236 @@ body { padding: 0; }
   #dashboardRoot { margin: 0; border: 0; }
 }
   </style>
+  <style id="structure-preserving-redesign">
+:root {
+  --brand-primary: #294BFF;
+  --navy: #294BFF;
+  --navy-2: #1f3de0;
+  --blue: #294BFF;
+  --canvas: #f7f7f8;
+  --surface: #ffffff;
+  --ink: #202123;
+  --muted: #6f7176;
+  --line: #e2e3e7;
+  --soft: #f4f4f5;
+  --shadow: 0 1px 2px rgba(16, 24, 40, .035), 0 8px 26px rgba(16, 24, 40, .035);
+}
+
+html, body { background: var(--canvas); color: var(--ink); }
+body { padding: 0; overflow-x: hidden; }
+button, select { border-radius: 8px; }
+
+.demo-strip {
+  position: relative; inset: auto; z-index: 1; display: grid;
+  width: auto; height: 28px; padding: 0 20px; place-items: center;
+  background: #fff9e6; border: 0; border-bottom: 1px solid #eee4bd;
+  color: #79651d; font-size: 10px; font-weight: 600; line-height: 1;
+}
+
+.app-header {
+  position: sticky; top: 0; z-index: 40; display: flex;
+  width: auto; height: 76px; margin: 0; padding: 0 32px;
+  justify-content: space-between; align-items: center;
+  background: rgba(255,255,255,.96); border: 0; border-bottom: 1px solid var(--line);
+  box-shadow: none; backdrop-filter: blur(14px);
+}
+.brand-block { gap: 12px; }
+.app-logo { width: 42px; height: 42px; border-radius: 11px; box-shadow: 0 5px 16px rgba(41,75,255,.16); }
+.brand-copy { display: flex; min-width: 310px; flex-direction: column; align-items: flex-start; gap: 0; }
+.brand-block h1 { margin: 0; font-size: 20px; line-height: 1.2; font-weight: 720; letter-spacing: -.25px; }
+.brand-period { display: flex; margin: 5px 0 0; align-items: center; gap: 7px; color: var(--muted); font-size: 11px; }
+.brand-period::before { display: none; }
+.brand-period span { display: inline; color: var(--muted); }
+.brand-period strong { color: #3e4148; font-size: 11px; font-weight: 600; }
+.sidebar-search, .sidebar-group-label { display: none !important; }
+
+.header-actions {
+  position: static; display: flex; width: auto; height: auto; margin: 0 0 0 auto; padding: 0;
+  grid-template-columns: none; align-items: flex-end; gap: 10px;
+  background: transparent; border: 0; border-radius: 0; box-shadow: none;
+}
+.header-actions::before { display: none; }
+.period-switch { width: auto; height: 40px; padding: 3px; border: 1px solid var(--line); border-radius: 9px; background: #f1f1f3; }
+.period-switch button { min-width: 42px; height: 32px; padding: 0 11px; border-radius: 7px; color: #656870; font-size: 11px; }
+.period-switch button.active { background: #fff; color: var(--brand-primary); box-shadow: 0 1px 4px rgba(16,24,40,.09); }
+.period-selector { width: 270px; min-width: 270px; gap: 3px; }
+.period-selector small { display: block; color: var(--muted); font-size: 9px; }
+.period-selector select { width: 100%; height: 40px; padding: 0 28px 0 11px; border: 1px solid var(--line); border-radius: 8px; background: #fff; color: #35373d; font-size: 11px; font-weight: 600; }
+.outline-button {
+  position: static; display: inline-flex; width: auto; height: 40px; padding: 0 15px;
+  justify-content: center; align-items: center; border: 1px solid var(--brand-primary); border-radius: 8px;
+  background: var(--brand-primary); color: #fff; font-size: 11px; font-weight: 650; box-shadow: none;
+}
+.outline-button:hover { background: #1f3de0; }
+
+.department-tabs {
+  position: sticky; inset: auto; top: 76px; z-index: 35; display: flex;
+  width: auto; height: auto; padding: 0 32px; flex-direction: row; align-items: stretch; gap: 0;
+  overflow-x: auto; overflow-y: hidden; background: rgba(255,255,255,.97);
+  border: 0; border-bottom: 1px solid var(--line); box-shadow: none; backdrop-filter: blur(14px);
+}
+.department-tabs::before { display: none; }
+.department-tab {
+  display: block; flex: 0 0 auto; width: auto; min-width: 100px; height: 50px;
+  padding: 0 15px; border: 0; border-bottom: 3px solid transparent; border-radius: 0;
+  background: transparent; color: #71747c; font-size: 12px; font-weight: 600; text-align: center;
+}
+.department-tab:hover { background: #f7f7f8; color: #292b31; }
+.department-tab.active { background: transparent; color: var(--brand-primary); border-bottom-color: var(--brand-primary); box-shadow: none; }
+.department-tab svg, .nav-label { display: none; }
+
+#dashboardRoot {
+  width: auto; max-width: 1600px; min-height: auto; margin: 0 auto; padding: 28px 32px 64px;
+  background: transparent; border: 0; border-radius: 0;
+}
+#dashboardRoot > * { width: 100%; max-width: none; }
+
+.overview-hero {
+  display: grid; grid-template-columns: 245px minmax(0, 1fr); min-height: 156px;
+  overflow: hidden; background: #fff; color: var(--ink);
+  border: 1px solid var(--line); border-radius: 15px; box-shadow: var(--shadow);
+}
+.overall-score { background: var(--brand-primary); border: 0; color: #fff; }
+.overall-score small { color: rgba(255,255,255,.72); font-size: 11px; }
+.overall-score strong { font-size: 44px; letter-spacing: -1.6px; }
+.overall-score span { color: #fff; font-size: 11px; }
+.hero-message { padding: 28px 32px; }
+.hero-message small { color: var(--brand-primary); font-size: 10px; font-weight: 700; }
+.hero-message h2 { margin: 8px 0 10px; max-width: 980px; font-size: 23px; line-height: 1.38; font-weight: 650; letter-spacing: -.4px; }
+.hero-message p { color: var(--muted); font-size: 11px; }
+
+.metric-section { margin-top: 28px; }
+.section-head { margin-bottom: 14px; }
+.section-label { color: var(--brand-primary); font-size: 9px; letter-spacing: 1.2px; }
+.section-title { font-size: 19px; font-weight: 680; letter-spacing: -.2px; }
+.section-note { color: var(--muted); font-size: 11px; }
+.metric-grid { grid-template-columns: repeat(var(--metric-columns, 6), minmax(0, 1fr)); gap: 11px; }
+.metric-card {
+  min-height: 158px; padding: 15px 16px 14px; overflow: hidden;
+  background: #fff; border: 1px solid var(--line); border-top: 3px solid var(--metric-color);
+  border-radius: 12px; box-shadow: none;
+}
+.metric-card::before { display: none; }
+.metric-card h3 { font-size: 12px; }
+.metric-card .owner { padding: 3px 7px; border-radius: 999px; font-size: 9px; }
+.metric-values { margin: 12px 0 9px; }
+.metric-values small { font-size: 9px; }
+.metric-values strong { font-size: 17px; }
+.achievement-line, .mini-progress { border-radius: 999px; }
+.achievement-line i, .mini-progress i { border-radius: inherit; }
+.metric-foot { font-size: 9px; }
+
+.trust-method {
+  grid-template-columns: 230px minmax(0, 1fr) 250px; margin-top: 12px;
+  overflow: hidden; background: #fff; border: 1px solid var(--line); border-left: 4px solid var(--brand-primary);
+  border-radius: 12px; box-shadow: none;
+}
+.trust-method-title { border-color: var(--line); }
+.trust-method-title span, .trust-formula b { color: var(--brand-primary); }
+.trust-formula div { border-color: var(--line); }
+.trust-governance { background: #f7f8ff; }
+
+.overview-grid { grid-template-columns: minmax(0, 1.7fr) 360px; gap: 14px; margin-top: 28px; }
+.side-stack { display: grid; gap: 14px; }
+.panel { overflow: hidden; background: #fff; border: 1px solid var(--line); border-radius: 13px; box-shadow: var(--shadow); }
+.panel-head { min-height: 64px; padding: 14px 18px; border-color: var(--line); }
+.panel-head h2 { font-size: 15px; font-weight: 670; }
+.panel-head p { color: var(--muted); font-size: 10px; }
+.side-count { border-radius: 999px; background: #eef1ff; color: var(--brand-primary); font-size: 9px; }
+.collab-list, .alert-list { padding-inline: 17px; }
+.collab-item, .alert-item { border-color: #ececef; }
+.collab-item h3, .alert-item h3 { font-size: 11px; }
+.collab-item p, .alert-item p { font-size: 9px; }
+
+.branch-switch, .filter-group { padding: 3px; border: 0; border-radius: 8px; background: #f0f0f2; }
+.branch-switch button, .filter-group button { min-height: 30px; border: 0; border-radius: 6px; background: transparent; color: #6d7078; font-size: 9px; }
+.branch-switch button.active, .filter-group button.active { background: #fff; color: var(--brand-primary); box-shadow: 0 1px 3px rgba(16,24,40,.08); }
+
+.plan-table th, .ledger-table th, .global-metric-table th, .department-ledger-table th {
+  padding: 11px 13px; background: #f7f7f8; color: #73767e; border-bottom: 1px solid var(--line);
+  font-size: 9px; font-weight: 650;
+}
+.plan-table td, .ledger-table td, .global-metric-table td, .department-ledger-table td { padding: 13px; border-color: #ececef; color: #4e5158; font-size: 10px; }
+.plan-table tbody tr:hover, .ledger-table tbody tr:hover, .global-metric-table tbody tr:hover { background: #fafaff; }
+.work-title { color: #25272c; font-size: 11px; font-weight: 650; }
+.work-output { color: var(--muted); font-size: 9px; }
+.work-department, .owner, .evidence-tag, .status-tag { border-radius: 999px; }
+
+.department-hero, .ledger-hero, .global-hero {
+  min-height: 150px; overflow: hidden; background: #fff; color: var(--ink);
+  border: 1px solid var(--line); border-radius: 14px; box-shadow: var(--shadow);
+}
+.department-hero { border-left: 5px solid var(--dept-color); }
+.department-intro { padding-right: 28px; }
+.department-intro p, .ledger-hero .section-label, .global-hero .section-label { color: var(--brand-primary); }
+.department-owner { background: color-mix(in srgb, var(--dept-color) 7%, white); }
+.ledger-hero > div:first-child span, .global-hero > div:first-child span { color: var(--muted); }
+.ledger-summary, .global-summary { background: #fafaff; }
+.ledger-summary article, .global-summary article { border-color: var(--line); }
+.ledger-panel, .global-metric-panel { margin-top: 14px; }
+.global-filter select { border-radius: 8px; }
+
+.modal-backdrop { background: rgba(24,27,38,.48); backdrop-filter: blur(4px); }
+.modal-card { border-radius: 16px; }
+.detail-box { border-radius: 10px; }
+.toast { border-radius: 10px; background: #25272c; }
+
+@media (max-width: 1180px) {
+  .metric-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .overview-grid { grid-template-columns: 1fr; }
+  .side-stack { grid-template-columns: 1fr 1fr; }
+  .trust-method { grid-template-columns: 220px 1fr; }
+  .trust-governance { grid-column: 1 / -1; }
+}
+
+@media (max-width: 860px) {
+  body { padding: 0; }
+  .demo-strip { display: grid; }
+  .app-header { position: relative; height: auto; min-height: 76px; padding: 12px 18px; flex-wrap: wrap; gap: 10px; }
+  .brand-copy { min-width: 0; }
+  .header-actions { position: static; width: 100%; height: auto; padding: 0; flex-wrap: nowrap; background: transparent; border: 0; }
+  .period-selector { width: auto; min-width: 0; flex: 1; }
+  .outline-button { position: static; width: auto; height: 40px; padding: 0 12px; }
+  .department-tabs { position: sticky; inset: auto; top: 0; width: auto; height: auto; padding: 0 16px; flex-direction: row; align-items: stretch; border-bottom: 1px solid var(--line); border-top: 0; }
+  .department-tab { flex: 0 0 auto; width: auto; min-width: 92px; height: 48px; padding: 0 12px; justify-content: center; }
+  #dashboardRoot { min-height: auto; margin: 0 auto; padding: 22px 18px 48px; border: 0; }
+  .overview-hero { grid-template-columns: 190px minmax(0, 1fr); }
+  .hero-message { padding: 24px; }
+  .hero-message h2 { font-size: 20px; }
+  .metric-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .panel-head { align-items: flex-start; flex-direction: column; gap: 10px; }
+  .panel-actions { width: 100%; }
+}
+
+@media (max-width: 600px) {
+  .demo-strip { min-height: 28px; height: auto; padding: 7px 12px; line-height: 1.35; text-align: center; }
+  .app-header { align-items: center; }
+  .app-logo { width: 38px; height: 38px; }
+  .brand-block h1 { font-size: 17px; }
+  .brand-period { display: none; }
+  .header-actions { gap: 6px; }
+  .period-switch { flex: 0 0 82px; }
+  .outline-button { font-size: 0; width: 40px; padding: 0; }
+  .outline-button::after { content: "导出"; font-size: 10px; }
+  .overview-hero { grid-template-columns: 1fr; }
+  .overall-score { min-height: 130px; }
+  .metric-grid { grid-template-columns: 1fr; }
+  .trust-method { grid-template-columns: 1fr; }
+  .trust-formula { grid-template-columns: 1fr 1fr; }
+  .trust-governance { grid-column: auto; }
+  .side-stack { grid-template-columns: 1fr; }
+  .section-head { align-items: flex-start; flex-direction: column; gap: 8px; }
+  .panel-actions { align-items: stretch; flex-direction: column; }
+  .branch-switch, .filter-group { width: 100%; }
+  .branch-switch button, .filter-group button { flex: 1; }
+}
+
+@media print {
+  .demo-strip, .department-tabs { display: none !important; }
+  .app-header { position: static; }
+  #dashboardRoot { padding: 0; }
+}
+  </style>
 </head>
 <body>
   <!--
@@ -1079,14 +1309,13 @@ body { padding: 0; }
         <p class="brand-period"><span>当前周期</span><strong id="dataPeriod">本周 · 2026年8月10日–14日</strong></p>
       </div>
     </div>
-    <label class="sidebar-search" aria-label="搜索看板"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-4-4"></path></svg><input id="sidebarSearch" type="search" placeholder="搜索看板" autocomplete="off"><kbd>⌘K</kbd></label>
     <div class="header-actions">
       <div class="period-switch" aria-label="周月维度切换">
         <button class="active" data-period="week">周</button>
         <button data-period="month">月</button>
       </div>
       <label class="period-selector"><small id="periodSelectLabel">周定位</small><select id="periodSelect" aria-label="选择工作周期"></select></label>
-      <button class="outline-button" id="exportDashboard"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4"></path><path d="M5 21h14a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2"></path></svg><span>导出看板</span></button>
+      <button class="outline-button" id="exportDashboard">导出当前看板</button>
     </div>
   </header>
 
@@ -1394,12 +1623,9 @@ function navIcon(id) {
 }
 
 function renderTabs() {
-  const overviewTab = [['overall', '经营总览', '#294BFF']];
-  const departmentTabs = Object.entries(departments).map(([id, d]) => [id, d.label, d.color]);
-  const toolTabs = [['global', '全局指标', '#294BFF'], ['ledger', '工作台账', '#294BFF']];
+  const tabs = [['overall', '总览', '#294BFF'], ...Object.entries(departments).map(([id, d]) => [id, d.label, d.color]), ['global', '全局指标', '#294BFF'], ['ledger', '工作台账', '#294BFF']];
   const root = document.querySelector('#departmentTabs');
-  const tabMarkup = ([id, label, color]) => `<button class="department-tab ${dashboardState.tab === id ? 'active' : ''}" data-tab="${id}" data-search-label="${label}" style="--tab-color:${color}" aria-label="${label}" title="${label}">${navIcon(id)}<span class="nav-label">${label}</span></button>`;
-  root.innerHTML = `<p class="sidebar-group-label">工作空间</p>${overviewTab.map(tabMarkup).join('')}<p class="sidebar-group-label">责任部门</p>${departmentTabs.map(tabMarkup).join('')}<p class="sidebar-group-label">管理工具</p>${toolTabs.map(tabMarkup).join('')}`;
+  root.innerHTML = tabs.map(([id, label, color]) => `<button class="department-tab ${dashboardState.tab === id ? 'active' : ''}" data-tab="${id}" style="--tab-color:${color}">${label}</button>`).join('');
   root.querySelectorAll('[data-tab]').forEach(button => button.addEventListener('click', () => {
     dashboardState.tab = button.dataset.tab;
     dashboardState.planFilter = 'all';
@@ -1526,31 +1752,20 @@ function trustTrendChart() {
 function renderOverview() {
   const showingCompleted = dashboardState.overallWorkView === 'completed';
   const periodNoun = dashboardState.period === 'week' ? '本周' : '本月';
-  const ontrackCount = overallPlans.filter(plan => plan[6] === 'ontrack').length;
-  const attentionCount = overallPlans.filter(plan => plan[6] === 'attention').length;
-  const metricRows = overallMetrics.map(([name, owner, target, current, achievement, color]) => `<div class="platform-metric-row" style="--metric-color:${color};--achievement:${achievement}%">
-    <div class="platform-metric-name"><i></i><strong>${name}</strong></div><span>${owner}</span><span>${target}</span><span>${current}</span><div class="platform-metric-progress"><b>${achievement}%</b><em><i></i></em></div>
-  </div>`).join('');
-  return `<section class="platform-page-head"><div><h1>品牌经营总览</h1><p>用统一指标、工作与证据持续经营 ALA 品牌信任</p></div><div class="platform-sync"><i></i><span>数据口径已同步 · 演示模式</span></div></section>
-  <section class="platform-focus-panel"><div><p class="platform-eyebrow">${periodNoun}治理重点</p><h2>建立可持续的品牌信任</h2><p>优先解决渠道用户质量、费用理解和困难用户方案，确保体验、表达与履约保持一致。</p><div class="platform-topic-list"><span>渠道质量</span><span>费用理解</span><span>困难用户</span><span>跨部门闭环</span></div></div><button data-demo-control="重点事项视图"><span>查看重点事项</span><b>→</b></button></section>
-  <section class="platform-stat-grid">
-    <article><div><span>品牌信任指数</span><small>较上期</small></div><strong>76.4</strong><p class="positive">↑ 6.2%</p></article>
-    <article><div><span>按计划推进</span><small>${periodNoun}</small></div><strong>${ontrackCount}</strong><p>共 ${overallPlans.length} 项工作</p></article>
-    <article><div><span>需要关注</span><small>${periodNoun}</small></div><strong>${attentionCount}</strong><p class="attention-text">等待协同关闭</p></article>
-    <article><div><span>已完成台账</span><small>本月</small></div><strong>${completedLedger.length}</strong><p>持续保留交付证据</p></article>
+  return `<section class="overview-hero">
+    <div class="overall-score"><small>整体指标达成</small><strong>76%</strong><span>${periodNoun}需关注</span></div>
+    <div class="hero-message"><small>${periodNoun}总结</small><h2>重点事项整体推进稳定，渠道用户质量、费用理解和困难用户方案仍需优先协同。</h2><p>总结随顶部周期同步切换；所有数值均为看板演示，接入真实数据后自动更新。</p></div>
   </section>
-  <section class="platform-overview-grid">
-    <article class="platform-card platform-trend-card"><header><div><h2>品牌信任趋势</h2><p>近十二周综合指数</p></div><span>0–100分</span></header><div class="platform-trend-value"><strong>76.4</strong><span>+4.8 本周期</span></div>${trustTrendChart()}</article>
-    <article class="platform-card platform-priority-card"><header><div><h2>优先事项</h2><p>需要管理关注</p></div><span>${attentionCount}项</span></header><div class="platform-priority-list"><div><i></i><p><strong>渠道用户质量</strong><span>投放 × 风控 · 等待规则确认</span></p><b>需关注</b></div><div><i></i><p><strong>费用理解体验</strong><span>产品 × 法务 · 补充表达检查</span></p><b>进行中</b></div><div><i></i><p><strong>困难用户方案</strong><span>催收 × 消保 · 明确授权边界</span></p><b>需关注</b></div></div></article>
+  <section class="metric-section"><div class="section-head"><div><p class="section-label">KEY RESULTS</p><h2 class="section-title">核心指标达成</h2></div><p class="section-note">目标、当前值接入后自动计算；当前百分比仅展示交互逻辑</p></div><div class="metric-grid" style="--metric-columns:${overallMetrics.length}">${metricCards(overallMetrics)}</div>
+    <article class="trust-method"><div class="trust-method-title"><span>品牌信任指数如何量化</span><strong>0–100分</strong><p>各维度先按统一规则标准化，再按权重汇总；首月建立基线，之后跟踪趋势与目标差距。</p></div><div class="trust-formula"><div><b>25%</b><span>用户体验与应用评分</span></div><div><b>25%</b><span>推荐意愿／NPS</span></div><div><b>20%</b><span>投诉与重复投诉逆向得分</span></div><div><b>15%</b><span>履约、复借与长期行为</span></div><div><b>15%</b><span>正向舆情与品牌搜索</span></div></div><p class="trust-governance">品牌部门定义业务目标，部门分析师计算与解释，数据治理／PMO确认口径、数据源和更新时间。</p></article>
   </section>
-  <section class="platform-section-head"><div><h2>关键指标</h2><p>目标、当前值、责任人与达成进度</p></div><button data-demo-control="指标管理">管理指标</button></section>
-  <section class="platform-card platform-metrics-card"><div class="platform-metric-row platform-metric-header"><span>指标</span><span>责任人</span><span>目标</span><span>当前</span><span>达成进度</span></div>${metricRows}</section>
-  <section class="platform-section-head platform-work-head"><div><h2>工作计划</h2><p>${showingCompleted ? '查看过去完成的工作、交付证据和验证状态' : `查看${periodNoun}工作、责任人与完成进度`}</p></div><div class="panel-actions"><div class="branch-switch"><button class="${showingCompleted ? '' : 'active'}" data-overall-work-view="active">进行中 <b>${overallPlans.length}</b></button><button class="${showingCompleted ? 'active' : ''}" data-overall-work-view="completed">已完成 <b>${completedLedger.length}</b></button></div>${filters()}</div></section>
-  <section class="platform-card platform-work-card">${showingCompleted ? completedWorkTable(completedLedger, true) : planTable(overallPlans, true)}</section>
-  <section class="platform-bottom-grid">
-    <article class="platform-card"><header><div><h2>跨部门协同</h2><p>两个以上部门共同交付</p></div><span>${collaborations.length}项</span></header><div class="platform-simple-list">${collaborations.map(c => `<div><i style="background:${c[3]}"></i><p><strong>${c[1]}</strong><span>${c[0]} · ${c[2]}</span></p><b>→</b></div>`).join('')}</div></article>
-    <article class="platform-card"><header><div><h2>${periodNoun}提醒</h2><p>仅显示管理关注事项</p></div><span>${alerts.length}项</span></header><div class="platform-simple-list">${alerts.map(a => `<div><i class="alert-dot"></i><p><strong>${a[0]}</strong><span>${a[1]}</span></p><b>→</b></div>`).join('')}</div></article>
-  </section>`;
+  <div class="overview-grid">
+    <section class="panel"><div class="panel-head"><div><h2>工作计划</h2><p>${showingCompleted ? '查看过去完成的工作、交付证据和验证状态' : `查看${periodNoun}工作、明确产出、责任人与完成进度`}</p></div><div class="panel-actions"><div class="branch-switch"><button class="${showingCompleted ? '' : 'active'}" data-overall-work-view="active">进行中 <b>${overallPlans.length}</b></button><button class="${showingCompleted ? 'active' : ''}" data-overall-work-view="completed">已完成 <b>${completedLedger.length}</b></button></div>${filters()}</div></div>${showingCompleted ? completedWorkTable(completedLedger, true) : planTable(overallPlans, true)}</section>
+    <aside class="side-stack">
+      <section class="panel"><div class="panel-head"><div><h2>跨部门协同</h2><p>需要两个以上部门共同完成</p></div><span class="side-count">${collaborations.length}项</span></div><div class="collab-list">${collaborations.map(c => `<article class="collab-item" style="--route-color:${c[3]}"><h3>${c[1]}</h3><div class="collab-route"><b>${c[0]}</b><span>→</span><span>共同交付</span></div><p>${c[2]}</p></article>`).join('')}</div></section>
+      <section class="panel"><div class="panel-head"><div><h2>本周提醒</h2><p>仅显示需要管理关注的事项</p></div><span class="side-count">${alerts.length}项</span></div><div class="alert-list">${alerts.map(a => `<article class="alert-item"><h3>${a[0]}</h3><p>${a[1]}</p></article>`).join('')}</div></section>
+    </aside>
+  </div>`;
 }
 
 function completedWorkTable(items, includeDepartment = false) {
@@ -1603,7 +1818,6 @@ function bindDynamicEvents() {
     renderDashboard();
   });
   document.querySelectorAll('[data-plan-index]').forEach(row => row.addEventListener('click', () => openPlan(row.dataset.planSource, Number(row.dataset.planIndex))));
-  document.querySelectorAll('[data-demo-control]').forEach(button => button.addEventListener('click', () => showToast(`${button.dataset.demoControl}将在接入真实数据后启用`)));
 }
 
 function openPlan(source, filteredIndex) {
@@ -1653,10 +1867,6 @@ function init() {
   document.querySelector('#closeModal').addEventListener('click', () => document.querySelector('#planModal').classList.remove('open'));
   document.querySelector('#planModal').addEventListener('click', event => { if (event.target.id === 'planModal') event.currentTarget.classList.remove('open'); });
   document.querySelector('#exportDashboard').addEventListener('click', () => { showToast('已进入打印／导出模式'); setTimeout(() => window.print(), 300); });
-  document.querySelector('#sidebarSearch').addEventListener('input', event => {
-    const query = event.target.value.trim().toLowerCase();
-    document.querySelectorAll('.department-tab').forEach(button => { button.hidden = query && !button.dataset.searchLabel.toLowerCase().includes(query); });
-  });
 }
 
 init();
